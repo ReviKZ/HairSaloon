@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "vBaSkvMSEG5cjZwefFbD92PNDw8jsZ2s1L1hk2Ymb+K51/Wa5gcyQUkO70tHjtpsbDUDihbBKzKEslpC2g4NMg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Revi\\source\\repos\\HairSaloon\\HairSaloonApp\\HairSaloonAPI\\HairSaloonAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Revi\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Revi\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Revi\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\Revi\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\Revi\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\Revi\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
