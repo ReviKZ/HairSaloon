@@ -14,3 +14,10 @@ This project is for me to learn to use EF, to follow OOP and S.O.L.I.D. principl
 ### Planning
   - GitHub Projects
   - PlantUML
+
+## Semantic Commit Messages
+  - Add : Adding new, non-existing feature
+  - Update : Editing existing feature
+  - Remove : Deleting existing feature
+  - Fix : Fix existing bug
+  - Doc : Adding documentation, commenting or non-code related info
