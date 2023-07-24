@@ -1,4 +1,6 @@
-﻿namespace HairSaloonAPI.Interfaces;
+﻿using HairSaloonAPI.Interfaces.DTOs;
+
+namespace HairSaloonAPI.Interfaces;
 
 public interface IHairDresser
 {
@@ -7,4 +9,6 @@ public interface IHairDresser
     public string _lastName { get; }
     public string _phoneNumber { get; }
     public string _emailAddress { get; }
+
+    public void Edit(IHairDresserDTO updatedDTO);
 }
