@@ -12,7 +12,7 @@ This project is for me to learn to use EF, to follow OOP and S.O.L.I.D. principl
 ### Testing
   - NUnit
 ### Planning
-  - GitHub Projects
+  - GitHub Projects Table planner
   - PlantUML
 
 ## Semantic Commit Messages
