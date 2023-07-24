@@ -1,4 +1,6 @@
-﻿namespace HairSaloonAPI.Interfaces.DTOs;
+﻿using HairSaloonAPI.Interfaces.DTOs;
+
+namespace HairSaloonAPI.Interfaces;
 
 public interface IAppointment
 {
