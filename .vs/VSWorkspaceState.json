@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\HairSaloonApp",
+    "\\HairSaloonApp\\HairSaloonAPI"
   ],
+  "SelectedNode": "\\HairSaloonApp\\HairSaloonApp.sln",
   "PreviewInSolutionExplorer": false
 }
