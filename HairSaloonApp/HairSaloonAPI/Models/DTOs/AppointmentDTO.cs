@@ -5,10 +5,10 @@ namespace HairSaloonAPI.Models.DTOs;
 
 public class AppointmentDTO : IAppointmentDTO
 {
-    public DateOnly _date { get; set; }
-    public TimeOnly _startTime { get; set; }
-    public TimeOnly _endTime { get; set; }
-    public IPerson _guest { get; set; }
-    public IPerson _hairDresser { get; set; }
-    public string _description { get; set; }
+    public DateTime Date { get; set; }
+    public DateTime StartTime { get; set; }
+    public DateTime EndTime { get; set; }
+    public Person Guest { get; set; }
+    public Person HairDresser { get; set; }
+    public string Description { get; set; }
 }

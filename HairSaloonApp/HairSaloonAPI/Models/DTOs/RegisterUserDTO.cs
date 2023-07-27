@@ -6,9 +6,9 @@ namespace HairSaloonAPI.Models.DTOs;
 public class RegisterUserDTO : IRegisterUserDTO
 {
     [Required]
-    public string _userName { get; set; }
+    public string UserName { get; set; }
     [Required, MinLength(6)]
-    public string _password { get; set; }
-    [Required, Compare("_password")]
-    public string _confirmPassword { get; set; }
+    public string Password { get; set; }
+    [Required, Compare("Password")]
+    public string ConfirmPassword { get; set; }
 }

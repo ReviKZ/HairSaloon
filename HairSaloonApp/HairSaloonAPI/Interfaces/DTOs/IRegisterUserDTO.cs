@@ -5,9 +5,9 @@ namespace HairSaloonAPI.Interfaces.DTOs;
 public interface IRegisterUserDTO
 {
     [Required]
-    public string _userName { get; }
+    public string UserName { get; }
     [Required, MinLength(6)]
-    public string _password { get; }
-    [Required, Compare("_password")]
-    public string _confirmPassword { get; }
+    public string Password { get; }
+    [Required, Compare("Password")]
+    public string ConfirmPassword { get; }
 }

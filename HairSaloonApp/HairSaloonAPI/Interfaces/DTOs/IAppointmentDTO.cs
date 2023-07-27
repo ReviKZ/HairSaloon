@@ -1,11 +1,13 @@
-﻿namespace HairSaloonAPI.Interfaces.DTOs;
+﻿using HairSaloonAPI.Models;
+
+namespace HairSaloonAPI.Interfaces.DTOs;
 
 public interface IAppointmentDTO
 {
-    public DateOnly _date { get; }
-    public TimeOnly _startTime { get; }
-    public TimeOnly _endTime { get; }
-    public IPerson _guest { get; }
-    public IPerson _hairDresser { get; }
-    public string _description { get; }
+    public DateTime Date { get; }
+    public DateTime StartTime { get; }
+    public DateTime EndTime { get; }
+    public Person Guest { get; }
+    public Person HairDresser { get; }
+    public string Description { get; }
 }
