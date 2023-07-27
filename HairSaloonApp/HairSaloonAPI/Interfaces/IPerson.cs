@@ -6,12 +6,12 @@ namespace HairSaloonAPI.Interfaces;
 
 public interface IPerson
 {
-    public int _id { get; }
-    public User _user { get; }
-    public string _firstName { get; }
-    public string _lastName { get; }
-    public Gender _gender { get; }
-    public PersonType _type { get; }
-    public string _phoneNumber { get; }
-    public string _emailAddress { get; }
+    public int Id { get; }
+    public User User { get; }
+    public string FirstName { get; }
+    public string LastName { get; }
+    public Gender Gender { get; }
+    public PersonType Type { get; }
+    public string PhoneNumber { get; }
+    public string EmailAddress { get; }
 }

@@ -2,8 +2,8 @@
 
 public interface IPersonDTO
 {
-    public string firstName { get; }
-    public string lastName { get; }
-    public string _phoneNumber { get; }
-    public string _emailAddress { get; }
+    public string FirstName { get; }
+    public string LastName { get; }
+    public string PhoneNumber { get; }
+    public string EmailAddress { get; }
 }

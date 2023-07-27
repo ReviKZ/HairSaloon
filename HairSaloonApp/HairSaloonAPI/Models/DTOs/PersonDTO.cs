@@ -4,8 +4,8 @@ namespace HairSaloonAPI.Models.DTOs;
 
 public class PersonDTO : IPersonDTO
 {
-    public string firstName { get; set; }
-    public string lastName { get; set; }
-    public string _phoneNumber { get; set; }
-    public string _emailAddress { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string PhoneNumber { get; set; }
+    public string EmailAddress { get; set; }
 }
