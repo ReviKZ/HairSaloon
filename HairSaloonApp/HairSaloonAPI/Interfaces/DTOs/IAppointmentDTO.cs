@@ -1,6 +1,6 @@
 ﻿namespace HairSaloonAPI.Interfaces.DTOs;
 
-public interface IAppointmentDTO : IDTO
+public interface IAppointmentDTO
 {
     public DateOnly _date { get; }
     public TimeOnly _startTime { get; }
