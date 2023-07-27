@@ -1,12 +1,13 @@
 ﻿using System.Text.RegularExpressions;
 using HairSaloonAPI.Enums;
+using HairSaloonAPI.Models;
 
 namespace HairSaloonAPI.Interfaces;
 
 public interface IPerson
 {
     public int _id { get; }
-    public IUser _user { get; }
+    public User _user { get; }
     public string _firstName { get; }
     public string _lastName { get; }
     public Gender _gender { get; }
