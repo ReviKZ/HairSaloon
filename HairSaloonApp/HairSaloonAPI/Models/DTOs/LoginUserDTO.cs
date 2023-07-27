@@ -6,7 +6,7 @@ namespace HairSaloonAPI.Models.DTOs;
 public class LoginUserDTO : ILoginUserDTO
 {
     [Required]
-    public string _userName { get; }
+    public string _userName { get; set; }
     [Required, MinLength(6)]
-    public string _password { get; }
+    public string _password { get; set; }
 }
