@@ -5,13 +5,13 @@ namespace HairSaloonAPI.Interfaces.Services;
 public interface IAppointmentService
 {
     /// <summary>
-    /// Creates an appointment in the database using the recieved values.
+    /// Creates an appointment in the database using the received values.
     /// </summary>
     /// <param name="_appointment"></param>
     public void CreateAppointment(IAppointmentDTO _appointment);
 
     /// <summary>
-    /// Updates the appointment in the database with the given id using the recieved values.
+    /// Updates the appointment in the database with the given id using the received values.
     /// </summary>
     /// <param name="id"></param>
     /// <param name="_appointment"></param>

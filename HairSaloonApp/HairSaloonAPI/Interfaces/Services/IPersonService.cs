@@ -14,7 +14,7 @@ public interface IPersonService
     public void CreatePerson(IUser user, string gender, string PersonType, IPersonDTO personInfo);
 
     /// <summary>
-    /// Updates the person in the database with the given id using recieved values.
+    /// Updates the person in the database with the given id using received values.
     /// </summary>
     /// <param name="id"></param>
     /// <param name="personInfo"></param>
@@ -25,4 +25,11 @@ public interface IPersonService
     /// </summary>
     /// <param name="id"></param>
     public void DeletePerson(int id);
+
+    /// <summary>
+    /// Get the Person with the given id from the database.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns>The Person with the matching id.</returns>
+    public IPerson GetPerson(int id);
 }
