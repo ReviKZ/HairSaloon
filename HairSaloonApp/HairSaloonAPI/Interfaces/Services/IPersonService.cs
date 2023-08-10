@@ -1,4 +1,5 @@
 ﻿using HairSaloonAPI.Interfaces.DTOs;
+using HairSaloonAPI.Models;
 
 namespace HairSaloonAPI.Interfaces.Services;
 
@@ -11,7 +12,7 @@ public interface IPersonService
     /// <param name="gender"></param>
     /// <param name="PersonType"></param>
     /// <param name="personInfo"></param>
-    public void CreatePerson(IUser user, string gender, string PersonType, IPersonDTO personInfo);
+    public void CreatePerson(int userId, string gender, string PersonType, IPersonDTO personInfo);
 
     /// <summary>
     /// Updates the person in the database with the given id using received values.
@@ -31,5 +32,5 @@ public interface IPersonService
     /// </summary>
     /// <param name="id"></param>
     /// <returns>The Person with the matching id.</returns>
-    public IPerson GetPerson(int id);
+    public Person GetPerson(int id);
 }
