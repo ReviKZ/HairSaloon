@@ -7,11 +7,11 @@ using BadHttpRequestException = Microsoft.AspNetCore.Http.BadHttpRequestExceptio
 
 namespace HairSaloonAPI.Services
 {
-    public class UserRegisterService : IRegisterUserService
+    public class RegisterUserService : IRegisterUserService
     {
         private DataContext _db;
 
-        public UserRegisterService(DataContext db)
+        public RegisterUserService(DataContext db)
         {
             _db = db;
         }
