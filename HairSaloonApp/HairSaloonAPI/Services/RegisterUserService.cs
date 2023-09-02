@@ -35,7 +35,7 @@ namespace HairSaloonAPI.Services
             }
         }
 
-        public void CreateUser(IRegisterUserDTO user)
+        public int CreateUser(IRegisterUserDTO user)
         {
             if (CheckIfUsernameExist(user.UserName) == true)
             {
@@ -51,6 +51,9 @@ namespace HairSaloonAPI.Services
 
             _db.Users.Add(_user);
             _db.SaveChanges();
+
+            int userId = _db.Users.Last().Id;
+            return userId;
         }
     }
 }

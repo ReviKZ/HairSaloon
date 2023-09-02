@@ -23,5 +23,5 @@ public interface IRegisterUserService
     /// Creates the user in the database if everything is in order with the values.
     /// </summary>
     /// <param name=""></param>
-    public void CreateUser(IRegisterUserDTO user);
+    public int CreateUser(IRegisterUserDTO user);
 }
