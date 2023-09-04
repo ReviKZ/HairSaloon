@@ -71,7 +71,11 @@ public class PersonService : IPersonService
 
     public void EditPerson(int id, IPersonDTO personInfo)
     {
-        Person _person = _db.Persons.First(u => u.Id == id);
+        if (!_db.Persons.Any(u => u.User.Id == id))
+        {
+            throw new BadHttpRequestException("No User found.");
+        }
+        Person _person = _db.Persons.First(u => u.User.Id == id);
 
         _person.FirstName = personInfo.FirstName;
         _person.LastName = personInfo.LastName;
