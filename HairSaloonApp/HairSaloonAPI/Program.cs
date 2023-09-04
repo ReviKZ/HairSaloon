@@ -1,4 +1,6 @@
 using HairSaloonAPI.Data;
+using HairSaloonAPI.Interfaces.Services;
+using HairSaloonAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>();
+
+builder.Services.AddTransient<IAppointmentService, AppointmentService>();
+builder.Services.AddTransient<IRegisterUserService, RegisterUserService>();
+builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<ILoginUserService, LoginUserService>();
+builder.Services.AddTransient<IPersonService, PersonService>();
 
 var app = builder.Build();
 
