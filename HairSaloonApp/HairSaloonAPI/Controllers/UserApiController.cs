@@ -82,6 +82,21 @@ namespace HairSaloonAPI.Controllers
             return Ok("You have been logged in");
         }
 
-        //TODO: Edit Person data
+        //Edit Person data
+        [HttpPut]
+        [Route("edit/{id}")]
+        public async Task<ActionResult<string>> Edit([FromRoute] int id, [FromBody] PersonDTO person)
+        {
+            try
+            {
+                _personService.EditPerson(id, person);
+
+                return Ok("The person has been edited");
+            }
+            catch (BadHttpRequestException exception)
+            {
+                return BadRequest(exception.Message);
+            }
+        }
     }
 }
