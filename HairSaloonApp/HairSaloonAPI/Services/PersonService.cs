@@ -83,9 +83,14 @@ public class PersonService : IPersonService
 
     public void DeletePerson(int id)
     {
-        Person _person = _db.Persons.First(u => u.Id == id);
+        if (!_db.Persons.Any(u => u.User.Id == id))
+        {
+            throw new BadHttpRequestException("No User found.");
+        }
+        Person _person = _db.Persons.First(u => u.User.Id == id);
 
         _db.Remove(_person);
         _db.SaveChanges();
+        
     }
 }

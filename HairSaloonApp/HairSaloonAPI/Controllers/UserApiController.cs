@@ -44,5 +44,22 @@ namespace HairSaloonAPI.Controllers
                 return BadRequest(exception.Message);
             }
         }
+
+        [HttpDelete]
+        [Route("delete/{id}")]
+        public async Task<ActionResult<string>> Delete(int id)
+        {
+            try
+            {
+                _personService.DeletePerson(id);
+                _userService.DeleteUser(id);
+
+                return Ok("User & Person has been deleted");
+            }
+            catch (BadHttpRequestException exception)
+            {
+                return BadRequest(exception.Message);
+            }
+        }
     }
 }
