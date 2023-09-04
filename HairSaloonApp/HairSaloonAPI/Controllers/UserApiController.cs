@@ -1,9 +1,6 @@
-﻿using HairSaloonAPI.Interfaces.DTOs;
-using HairSaloonAPI.Interfaces.Services;
+﻿using HairSaloonAPI.Interfaces.Services;
 using HairSaloonAPI.Models.DTOs;
 using HairSaloonAPI.Models.DTOs.ControllerDTOs;
-using HairSaloonAPI.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HairSaloonAPI.Controllers
