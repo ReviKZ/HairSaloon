@@ -1,6 +1,7 @@
 ﻿using System.Security.Cryptography;
 using HairSaloonAPI.Data;
 using HairSaloonAPI.Interfaces.Services;
+using HairSaloonAPI.Models;
 
 namespace HairSaloonAPI.Services;
 
@@ -23,13 +24,14 @@ public class LoginUserService : ILoginUserService
         return false;
     }
 
-    public bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
+    public bool VerifyPasswordHash(string password, string username)
     {
-        using (var hmac = new HMACSHA512(passwordSalt))
+        User user = _db.Users.First(u => u.Username == username);
+        using (var hmac = new HMACSHA512(user.PasswordSalt))
         {
             var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
 
-            return computedHash.SequenceEqual(passwordHash);
+            return computedHash.SequenceEqual(user.PasswordHash);
         }
     }
 }

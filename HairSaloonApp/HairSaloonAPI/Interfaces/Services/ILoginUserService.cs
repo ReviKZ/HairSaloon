@@ -13,8 +13,7 @@ public interface ILoginUserService
     /// Hashes the password using the given salt and compares it to the database value.
     /// </summary>
     /// <param name="password"></param>
-    /// <param name="passwordHash"></param>
-    /// <param name="passwordSalt"></param>
+    /// <param name="username"></param>
     /// <returns>True if the values match, otherwise False</returns>
-    public bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt);
+    public bool VerifyPasswordHash(string password, string username);
 }
