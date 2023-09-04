@@ -1,4 +1,5 @@
 ﻿using HairSaloonAPI.Interfaces.DTOs;
+using HairSaloonAPI.Interfaces.DTOs.ControllerDTOs;
 using HairSaloonAPI.Models;
 
 namespace HairSaloonAPI.Interfaces.Services;
@@ -6,10 +7,10 @@ namespace HairSaloonAPI.Interfaces.Services;
 public interface IAppointmentService
 {
     /// <summary>
-    /// Creates an appointment in the database using the received values.
+    /// Convert the received values and creates a new appointment
     /// </summary>
     /// <param name="_appointment"></param>
-    public void CreateAppointment(IAppointmentDTO _appointment);
+    public void CreateAppointment(ICreateAppointmentDTO _appointment);
 
     /// <summary>
     /// Updates the appointment in the database with the given id using the received values.

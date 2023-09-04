@@ -1,6 +1,7 @@
 ﻿using HairSaloonAPI.Data;
 using HairSaloonAPI.Interfaces;
 using HairSaloonAPI.Interfaces.DTOs;
+using HairSaloonAPI.Interfaces.DTOs.ControllerDTOs;
 using HairSaloonAPI.Interfaces.Services;
 using HairSaloonAPI.Models;
 using Microsoft.EntityFrameworkCore;
@@ -16,16 +17,33 @@ public class AppointmentService : IAppointmentService
         _db = db;
     }
 
-    public void CreateAppointment(IAppointmentDTO appointment)
+    public void CreateAppointment(ICreateAppointmentDTO appointment)
     {
-        Appointment _appointment = new Appointment();
-        _appointment.Date = appointment.Date;
-        _appointment.Description = appointment.Description;
-        _appointment.StartTime = appointment.StartTime;
-        _appointment.EndTime = appointment.EndTime;
-        _appointment.HairDresser = appointment.HairDresser;
-        _appointment.Guest = appointment.Guest;
-        _appointment.Verified = false;
+        if (!(_db.Users.Any(u => u.Id == appointment.HairDresserId) &&
+              _db.Users.Any(u => u.Id == appointment.GuestId)))
+        {
+            throw new BadHttpRequestException("The HairDresser or The Guest was not found");
+        }
+
+        if (!CheckIfHairDresser(_db.Persons.First(u => u.User.Id == appointment.HairDresserId)))
+        {
+            throw new BadHttpRequestException("You put a Guest as a HairDresser");
+        }
+
+        Appointment _appointment = new Appointment
+        {
+            Date = new DateTime(appointment.Date.Year, appointment.Date.Month, appointment.Date.Day,
+                0, 0, 0),
+            Description = appointment.Description,
+            StartTime = new DateTime(appointment.Date.Year, appointment.Date.Month, appointment.Date.Day,
+                appointment.StartTime.Hour, appointment.StartTime.Minute, appointment.StartTime.Second),
+            EndTime = new DateTime(appointment.Date.Year, appointment.Date.Month, appointment.Date.Day,
+                appointment.EndTime.Hour, appointment.EndTime.Minute, appointment.EndTime.Second),
+            HairDresser = _db.Persons.First(u => u.User.Id == appointment.HairDresserId),
+            Guest = _db.Persons.First(u => u.User.Id == appointment.GuestId),
+            Verified = false
+
+        };
 
         _db.Appointments.Add(_appointment);
         _db.SaveChanges();
