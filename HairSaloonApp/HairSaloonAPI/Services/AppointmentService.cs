@@ -4,6 +4,7 @@ using HairSaloonAPI.Interfaces.DTOs;
 using HairSaloonAPI.Interfaces.DTOs.ControllerDTOs;
 using HairSaloonAPI.Interfaces.Services;
 using HairSaloonAPI.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace HairSaloonAPI.Services;
@@ -62,15 +63,28 @@ public class AppointmentService : IAppointmentService
         return _appointments;
     }
 
-    public void UpdateAppointment(int id, IAppointmentDTO appointment)
+    public void UpdateAppointment(int id, ICreateAppointmentDTO appointment)
     {
+        if (!_db.Appointments.Any(a => a.Id == id))
+        {
+            throw new BadHttpRequestException("This Appointment doesn't exist");
+        }
+
+        if (!CheckIfHairDresser(_db.Persons.First(u => u.User.Id == appointment.HairDresserId)))
+        {
+            throw new BadHttpRequestException("You put a Guest as a HairDresser");
+        }
+
         Appointment _appointment = _db.Appointments.First(a => a.Id == id);
-        _appointment.Date = appointment.Date;
+        _appointment.Date = new DateTime(appointment.Date.Year, appointment.Date.Month, appointment.Date.Day,
+            0, 0, 0);
         _appointment.Description = appointment.Description;
-        _appointment.StartTime = appointment.StartTime;
-        _appointment.EndTime = appointment.EndTime;
-        _appointment.HairDresser = appointment.HairDresser;
-        _appointment.Guest = appointment.Guest;
+        _appointment.StartTime = new DateTime(appointment.Date.Year, appointment.Date.Month, appointment.Date.Day,
+            appointment.StartTime.Hour, appointment.StartTime.Minute, appointment.StartTime.Second);
+        _appointment.EndTime = new DateTime(appointment.Date.Year, appointment.Date.Month, appointment.Date.Day,
+            appointment.EndTime.Hour, appointment.EndTime.Minute, appointment.EndTime.Second);
+        _appointment.HairDresser = _db.Persons.First(u => u.User.Id == appointment.HairDresserId);
+        _appointment.Guest = _db.Persons.First(u => u.User.Id == appointment.GuestId);
         _appointment.Verified = false;
 
         _db.SaveChanges();

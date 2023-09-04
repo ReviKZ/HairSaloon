@@ -17,7 +17,7 @@ public interface IAppointmentService
     /// </summary>
     /// <param name="id"></param>
     /// <param name="_appointment"></param>
-    public void UpdateAppointment(int id, IAppointmentDTO _appointment);
+    public void UpdateAppointment(int id, ICreateAppointmentDTO _appointment);
 
     /// <summary>
     /// Deletes the appointment in the database with the given id.
