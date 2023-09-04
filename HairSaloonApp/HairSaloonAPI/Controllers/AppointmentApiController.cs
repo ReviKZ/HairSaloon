@@ -40,7 +40,22 @@ namespace HairSaloonAPI.Controllers
 
         //TODO: Delete Appointment
 
-        //TODO: Edit Appointment
+        //Edit Appointment
+        [HttpPut]
+        [Route("edit/{id}")]
+        public async Task<ActionResult<string>> Edit([FromRoute] int id, [FromBody] CreateAppointmentDTO appointment)
+        {
+            try
+            {
+                _appointmentService.UpdateAppointment(id, appointment);
+
+                return Ok("Appointment has been updated");
+            }
+            catch (BadHttpRequestException exception)
+            {
+                return BadRequest(exception.Message);
+            }
+        }
 
         //TODO: List Appointments by User Id
 
