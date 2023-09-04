@@ -20,4 +20,10 @@ public class UserService : IUserService
         _db.Users.Remove(_user);
         _db.SaveChanges();
     }
+
+    public int GetLastUserId()
+    {
+        User _lastUser = _db.Users.OrderByDescending(u => u.Id).First();
+        return _lastUser.Id;
+    }
 }
