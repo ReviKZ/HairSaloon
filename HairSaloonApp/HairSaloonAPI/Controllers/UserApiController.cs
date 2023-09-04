@@ -45,6 +45,8 @@ namespace HairSaloonAPI.Controllers
             }
         }
 
+        // Delete User & Person
+
         [HttpDelete]
         [Route("delete/{id}")]
         public async Task<ActionResult<string>> Delete(int id)
@@ -61,5 +63,25 @@ namespace HairSaloonAPI.Controllers
                 return BadRequest(exception.Message);
             }
         }
+
+        //Login
+        [HttpPost]
+        [Route("login")]
+        public async Task<ActionResult<string>> Login(LoginUserDTO user)
+        {
+            if (!_loginUserService.CheckIfUsernameExist(user.UserName))
+            {
+                return NotFound("We haven't found a user with this username");
+            }
+
+            if (!_loginUserService.VerifyPasswordHash(user.Password, user.UserName))
+            {
+                return ValidationProblem("The password is incorrect");
+            }
+
+            return Ok("You have been logged in");
+        }
+
+        //TODO: Edit Person data
     }
 }
