@@ -1,6 +1,7 @@
 ﻿using HairSaloonAPI.Interfaces.DTOs;
 using HairSaloonAPI.Interfaces.DTOs.ControllerDTOs;
 using HairSaloonAPI.Models;
+using HairSaloonAPI.Models.DTOs.ControllerDTOs;
 
 namespace HairSaloonAPI.Interfaces.Services;
 
@@ -29,7 +30,7 @@ public interface IAppointmentService
     /// Gets all User related Appointments.
     /// </summary>
     /// <returns>Every Appointment with relations to the User</returns>
-    public List<Appointment> GetAppointmentList();
+    public List<CreateAppointmentDTO> GetAppointmentListByUserId(int UserId);
 
     /// <summary>
     /// Gets the Appointment with the given id.

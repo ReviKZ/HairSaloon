@@ -4,6 +4,8 @@ using HairSaloonAPI.Interfaces.DTOs;
 using HairSaloonAPI.Interfaces.DTOs.ControllerDTOs;
 using HairSaloonAPI.Interfaces.Services;
 using HairSaloonAPI.Models;
+using HairSaloonAPI.Models.DTOs.ControllerDTOs;
+using HairSaloonAPI.Structs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -57,10 +59,30 @@ public class AppointmentService : IAppointmentService
         return _appointment;
     }
 
-    public List<Appointment> GetAppointmentList()
+    public List<CreateAppointmentDTO> GetAppointmentListByUserId(int userId)
     {
-        List<Appointment> _appointments = _db.Appointments.ToList();
-        return _appointments;
+        if (!_db.Users.Any(u => u.Id == userId))
+        {
+            throw new BadHttpRequestException("There isn't a user with that Id");
+        }
+
+        List<Appointment> _appointments = _db.Appointments
+            .Include(a => a.HairDresser.User)
+            .Include(a => a.Guest.User)
+            .Where(a => a.Guest.User.Id == userId || a.HairDresser.User.Id == userId)
+            .ToList();
+        List<CreateAppointmentDTO> _appointmentList = new List<CreateAppointmentDTO>();
+        foreach (Appointment appointment in _appointments)
+            _appointmentList.Add(new CreateAppointmentDTO
+            {
+                Date = new DateFormat(appointment.Date.Year, appointment.Date.Month, appointment.Date.Day),
+                StartTime = new TimeFormat(appointment.StartTime.Hour, appointment.StartTime.Minute, appointment.StartTime.Second),
+                EndTime = new TimeFormat(appointment.EndTime.Hour, appointment.EndTime.Minute, appointment.EndTime.Second),
+                GuestId = appointment.Guest.User.Id,
+                HairDresserId = appointment.HairDresser.User.Id,
+                Description = appointment.Description
+            });
+        return _appointmentList;
     }
 
     public void UpdateAppointment(int id, ICreateAppointmentDTO appointment)
@@ -92,6 +114,11 @@ public class AppointmentService : IAppointmentService
 
     public void DeleteAppointment(int id)
     {
+        if (!_db.Appointments.Any(a => a.Id == id))
+        {
+            throw new BadHttpRequestException("This Appointment doesn't exist");
+        }
+
         Appointment _appointment = _db.Appointments.First(a => a.Id == id);
 
         _db.Appointments.Remove(_appointment);
