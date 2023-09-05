@@ -95,5 +95,20 @@ namespace HairSaloonAPI.Controllers
                 return BadRequest(exception.Message);
             }
         }
+
+        //Get Person data
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<ActionResult> GetPerson([FromRoute] int id)
+        {
+            try
+            {
+                return Ok(_personService.GetPerson(id));
+            }
+            catch (BadHttpRequestException exception)
+            {
+                return BadRequest(exception.Message);
+            }
+        }
     }
 }
