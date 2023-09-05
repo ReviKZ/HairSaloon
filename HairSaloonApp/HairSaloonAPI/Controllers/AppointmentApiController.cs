@@ -38,7 +38,21 @@ namespace HairSaloonAPI.Controllers
             }
         }
 
-        //TODO: Delete Appointment
+        //Delete Appointment
+        [HttpDelete]
+        [Route("delete/{id}")]
+        public async Task<ActionResult<string>> Delete(int id)
+        {
+            try
+            {
+                _appointmentService.DeleteAppointment(id);
+                return Ok("Appointment has been deleted");
+            }
+            catch (BadHttpRequestException exception)
+            {
+                return BadRequest(exception.Message);
+            }
+        }
 
         //Edit Appointment
         [HttpPut]
@@ -57,7 +71,20 @@ namespace HairSaloonAPI.Controllers
             }
         }
 
-        //TODO: List Appointments by User Id
+        //List Appointments by User Id
+        [HttpGet]
+        [Route("/list/{id}")]
+        public async Task<ActionResult> ListByUserId([FromRoute]int id)
+        {
+            try
+            {
+                return Ok(_appointmentService.GetAppointmentListByUserId(id));
+            }
+            catch (BadHttpRequestException exception)
+            {
+                return BadRequest(exception.Message);
+            }
+        }
 
         //TODO: List Single Appointment
     }
