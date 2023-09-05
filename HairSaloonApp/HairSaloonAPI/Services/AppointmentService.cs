@@ -154,6 +154,11 @@ public class AppointmentService : IAppointmentService
 
     public void VerifyAppointment(int id)
     {
+        if (!_db.Appointments.Any(a => a.Id == id))
+        {
+            throw new BadHttpRequestException("This Appointment doesn't exist");
+        }
+
         Appointment _appointment = _db.Appointments.First(a => a.Id == id);
         _appointment.Verified = true;
 
