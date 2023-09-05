@@ -53,10 +53,27 @@ public class AppointmentService : IAppointmentService
 
     }
 
-    public Appointment GetAppointment(int id)
+    public CreateAppointmentDTO GetAppointment(int id)
     {
-        Appointment _appointment = _db.Appointments.First(a => a.Id == id);
-        return _appointment;
+        if (!_db.Appointments.Any(a => a.Id == id))
+        {
+            throw new BadHttpRequestException("There isn't an appointment with that Id");
+        }
+
+        Appointment _appointment = _db.Appointments
+            .Include(a => a.HairDresser.User)
+            .Include(a => a.Guest.User)
+            .First(a => a.Id == id);
+        CreateAppointmentDTO _appointmentDto = new CreateAppointmentDTO
+        {
+            Date = new DateFormat(_appointment.Date.Year, _appointment.Date.Month, _appointment.Date.Day),
+            StartTime = new TimeFormat(_appointment.StartTime.Hour, _appointment.StartTime.Minute, _appointment.StartTime.Second),
+            EndTime = new TimeFormat(_appointment.EndTime.Hour, _appointment.EndTime.Minute, _appointment.EndTime.Second),
+            GuestId = _appointment.Guest.User.Id,
+            HairDresserId = _appointment.HairDresser.User.Id,
+            Description = _appointment.Description
+        };
+        return _appointmentDto;
     }
 
     public List<CreateAppointmentDTO> GetAppointmentListByUserId(int userId)

@@ -37,7 +37,7 @@ public interface IAppointmentService
     /// </summary>
     /// <param name="id"></param>
     /// <returns>An Appointment with the matching id.</returns>
-    public Appointment GetAppointment(int id);
+    public CreateAppointmentDTO GetAppointment(int id);
 
     /// <summary>
     /// Changes the verification status of the appointment in the database with the given id.
