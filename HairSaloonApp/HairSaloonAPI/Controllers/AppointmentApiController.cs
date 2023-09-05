@@ -73,7 +73,7 @@ namespace HairSaloonAPI.Controllers
 
         //List Appointments by User Id
         [HttpGet]
-        [Route("/list/{id}")]
+        [Route("list/{id}")]
         public async Task<ActionResult> ListByUserId([FromRoute]int id)
         {
             try
@@ -86,6 +86,19 @@ namespace HairSaloonAPI.Controllers
             }
         }
 
-        //TODO: List Single Appointment
+        //List Single Appointment
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<ActionResult> GetAppointment([FromRoute] int id)
+        {
+            try
+            {
+                return Ok(_appointmentService.GetAppointment(id));
+            }
+            catch (BadHttpRequestException exception)
+            {
+                return BadRequest(exception.Message);
+            }
+        }
     }
 }
