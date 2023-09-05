@@ -7,6 +7,14 @@ public struct TimeFormat
     private int _hour;
     private int _minute;
     private int _second;
+
+    public TimeFormat(int hour, int minute, int second)
+    {
+        _hour = hour;
+        _minute = minute;
+        _second = second;
+    }
+
     public int Hour 
     {
         get
