@@ -100,5 +100,20 @@ namespace HairSaloonAPI.Controllers
                 return BadRequest(exception.Message);
             }
         }
+
+        [HttpPatch]
+        [Route("{id}/verify")]
+        public async Task<ActionResult<string>> VerfiyAppointment([FromRoute] int id)
+        {
+            try
+            {
+                _appointmentService.VerifyAppointment(id);
+                return Ok("Appointment has been verified");
+            }
+            catch (BadHttpRequestException exception)
+            {
+                return BadRequest(exception.Message);
+            }
+        }
     }
 }
