@@ -1,24 +1,60 @@
-import logo from './logo.svg';
 import './App.css';
+import { Routes, Route, Link } from 'react-router-dom';
+import { Layout } from "./Components/Shared Components/Layout"
+import { NotFound } from "./Components/Shared Components/NotFound"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+          {/* Main Router Tag */}
+          <Routes>
+              {/* Layout Tag */}
+              <Route path="/" element={<Layout />} >
+                  {/* Page Tags */}
+
+                  {/* For Everyone */}
+                  {/* Login Page */}
+                  <Route path="" element={ } />
+
+                  {/* Get Own User */}
+                  <Route path="details" element={ } />
+
+                  {/* Edit Own User */}
+                  <Route path="edit" element={ } />
+
+                  {/* Get Appointment List */}
+                  <Route path="appointments" element={ } />
+
+                  {/* Get Appointment */}
+                  <Route path="appointments/:id" element={ } />
+
+
+                  {/* HairDresser Routes */}
+                  {/* Add Appointment */}
+                  <Route path="appointments/create" element={ } />
+
+                  {/* Edit Appointment */}
+                  <Route path="appointments/edit/:id" element={ } />
+
+                  {/* List Users */}
+                  <Route path="users" element={ } />
+
+                  {/* Register User */}
+                  <Route path="register" element={ } />
+
+                  {/* Get Other User */}
+                  <Route path="details/:id" element={ } />
+
+                  {/* Edit Other User */}
+                  <Route path="edit/:id" element={ } />
+
+              </Route>
+
+              {/* Not-Found Page */}
+              <Route path="*" element={<NotFound />} />
+
+          </Routes>
+      </>
   );
 }
 
