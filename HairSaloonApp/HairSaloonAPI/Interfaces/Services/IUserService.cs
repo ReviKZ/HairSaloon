@@ -1,4 +1,6 @@
-﻿namespace HairSaloonAPI.Interfaces.Services;
+﻿using HairSaloonAPI.Models.DTOs.ControllerDTOs;
+
+namespace HairSaloonAPI.Interfaces.Services;
 
 public interface IUserService
 {
@@ -12,4 +14,8 @@ public interface IUserService
     /// Get the id of last added user from the database.
     /// </summary>
     public int GetLastUserId();
+
+    public List<UserListDTO> GetAllUsers();
+
+    public List<UserListDTO> GetAllHairDressers();
 }
