@@ -110,5 +110,21 @@ namespace HairSaloonAPI.Controllers
                 return BadRequest(exception.Message);
             }
         }
+
+        [HttpGet]
+        [Route("list")]
+        public async Task<ActionResult> GetPersonList()
+        {
+            return Ok(_userService.GetAllUsers());
+        }
+
+        [HttpGet]
+        [Route("list/hairdressers")]
+        public async Task<ActionResult> GetHairDresserList()
+        {
+            return Ok(_userService.GetAllHairDressers());
+        }
+
+
     }
 }
