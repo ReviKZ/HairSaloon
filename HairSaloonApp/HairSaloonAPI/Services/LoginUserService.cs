@@ -1,7 +1,9 @@
 ﻿using System.Security.Cryptography;
 using HairSaloonAPI.Data;
+using HairSaloonAPI.Interfaces;
 using HairSaloonAPI.Interfaces.Services;
 using HairSaloonAPI.Models;
+using HairSaloonAPI.Models.DTOs;
 
 namespace HairSaloonAPI.Services;
 
@@ -33,5 +35,20 @@ public class LoginUserService : ILoginUserService
 
             return computedHash.SequenceEqual(user.PasswordHash);
         }
+    }
+
+    public int Login(LoginUserDTO userData)
+    {
+        if (!CheckIfUsernameExist(userData.UserName))
+        {
+            throw new BadHttpRequestException("We haven't found a user with this username");
+        }
+
+        if (!VerifyPasswordHash(userData.Password, userData.UserName))
+        {
+            throw new BadHttpRequestException("The password is incorrect");
+        }
+
+        return _db.Users.First(u => u.Username == userData.UserName).Id;
     }
 }
