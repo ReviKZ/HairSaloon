@@ -18,6 +18,14 @@ builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ILoginUserService, LoginUserService>();
 builder.Services.AddTransient<IPersonService, PersonService>();
 
+builder.Services.AddCors(option => option.AddPolicy("MyCorsPolicy", builder =>
+{
+    builder.WithOrigins("http://localhost:3000")
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials();
+}));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -26,6 +34,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("MyCorsPolicy");
 
 app.UseHttpsRedirection();
 
