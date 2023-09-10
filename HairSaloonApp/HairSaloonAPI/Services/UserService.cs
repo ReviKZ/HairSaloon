@@ -3,6 +3,7 @@ using HairSaloonAPI.Enums;
 using HairSaloonAPI.Interfaces.Services;
 using HairSaloonAPI.Models;
 using HairSaloonAPI.Models.DTOs.ControllerDTOs;
+using Microsoft.EntityFrameworkCore;
 
 namespace HairSaloonAPI.Services;
 
@@ -31,7 +32,7 @@ public class UserService : IUserService
 
     public List<UserListDTO> GetAllUsers()
     {
-        List<Person> dbUserList = _db.Persons.ToList();
+        List<Person> dbUserList = _db.Persons.Include(p => p.User).ToList();
         List<UserListDTO> users = new List<UserListDTO>();
         dbUserList.ForEach(p => users.Add(new UserListDTO(p.FirstName, p.LastName, p.User.Id)));
 
