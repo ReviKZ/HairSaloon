@@ -16,7 +16,7 @@ const User = (id) => {
 
     return (
         <>
-            <h1>Your Information</h1>
+            <h1>Person Information</h1>
             {loading ?
                 <p>Loading...</p>
                 : user ? (
