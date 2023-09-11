@@ -1,18 +1,16 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Fetch from "../Shared Components/Fetch";
+import PersonConverter from "../Else/PersonConverter";
 
 const Appointments = () => {
     const [loading, setLoading] = useState(true);
     const [appointments, setAppointments] = useState(false);
-    const [guest, setGuest] = useState(false);
 
     useEffect(() => {
         const dataFetch = async () => {
             const appointmentData = await Fetch("get", "appointment/list/" + localStorage.getItem("userId"), "");
-            const guestData = await Fetch("get", "user/" + appointmentData.guestId, "");
             setAppointments(appointmentData);
-            setGuest(guestData);
             setLoading(false);
         }
         dataFetch();
@@ -24,13 +22,13 @@ const Appointments = () => {
             {loading ?
                 <p>Loading...</p>
                 : appointments ?
-                    appointment.map((appointment) => (
+                    appointments.map((appointment) => (
                         <div key={appointment.id}>
-                            <Link to={"/appointment/" + appointment.id}>
+                            <Link to={"/appointments/" + appointment.id}>
                                 <div>{appointment.date.year}.{appointment.date.month}.{appointment.date.day}
                                     ({appointment.startTime.hour}:{appointment.startTime.minute})
                                     {localStorage.getItem("userId") == appointment.hairDresserId ?
-                                        (<>- {guest.firstName} {guest.lastName}</>) : <></>}</div>
+                                        (<PersonConverter id={appointment.guestId}/>) : <></>}</div>
                             </Link>
                         </div>
                     )
