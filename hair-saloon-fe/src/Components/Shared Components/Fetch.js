@@ -43,6 +43,10 @@ async function Fetch(type, endpoint, payload) {
         response = await fetch(
             `https://localhost:7035/api/${endpoint}`, {
             method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload)
         }
         );
     }
