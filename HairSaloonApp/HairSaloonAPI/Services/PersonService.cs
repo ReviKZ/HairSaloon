@@ -4,6 +4,7 @@ using HairSaloonAPI.Interfaces;
 using HairSaloonAPI.Interfaces.DTOs;
 using HairSaloonAPI.Interfaces.Services;
 using HairSaloonAPI.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
 namespace HairSaloonAPI.Services;
@@ -70,7 +71,7 @@ public class PersonService : IPersonService
             throw new BadHttpRequestException("No User found.");
         }
 
-        Person _person = _db.Persons.First(u => u.User.Id == id);
+        Person _person = _db.Persons.Include(u => u.User).First(u => u.User.Id == id);
 
         return _person;
     }

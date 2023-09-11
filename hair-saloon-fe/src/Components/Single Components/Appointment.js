@@ -16,6 +16,7 @@ const Appointment = () => {
             const appointmentData = await Fetch("get", "appointment/" + id, "");
             const hairDresserData = await Fetch("get", "user/" + appointmentData.hairDresserId, "");
             const guestData = await Fetch("get", "user/" + appointmentData.guestId, "");
+            console.log(hairDresserData);
             setAppointment(appointmentData);
             setHairDresser(hairDresserData);
             setGuest(guestData);
@@ -43,17 +44,17 @@ const Appointment = () => {
                             <p>Approx. Ending Time: {appointment.endTime.hour}:{appointment.endTime.minute}</p>
                             <p>Status of Appointment: {appointment.verified ? <>Verified</> : <>Not Verified</>}</p>
                             <p>Description of Appointment: {appointment.description}</p>
-                            {localStorage.getItem("userId") === hairDresser.id ? (<p>Your Guest : {guest.firstName} {guest.lastName}</p>) :
+                            {localStorage.getItem("userId") == hairDresser.user.id ? (<p>Your Guest : {guest.firstName} {guest.lastName}</p>) :
                                 (<p>Your Hairdresser : {hairDresser.firstName} {hairDresser.lastName}</p>)}
                             <small>Is there a problem with the appointment? You want to get in contact, make corrections?</small>
                             <small>
-                                You can reach your {localStorage.getItem("userId") === hairDresser.id ?
-                                    (<small>Hairdresser at {hairDresser.phoneNumber} or write to {hairDresser.emailAddress}</small>)
-                                    :
+                                You can reach your {localStorage.getItem("userId") == hairDresser.user.id ?
                                     (<small>Guest at {guest.phoneNumber} or write to {guest.emailAddress}</small>)
+                                    :
+                                    (<small>Hairdresser at {hairDresser.phoneNumber} or write to {hairDresser.emailAddress}</small>)
                                 }
                             </small>
-                            {localStorage.getItem("userId") === hairDresser.id ?
+                            {localStorage.getItem("userId") == hairDresser.user.id ?
                                 <></>
                                 :
                                 (
