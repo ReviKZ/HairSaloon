@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Fetch from "../Shared Components/Fetch"
+import "../../Styling/LoginForm.css";
 
 const LoginForm = () => {
     const navigate = useNavigate();
@@ -19,29 +20,29 @@ const LoginForm = () => {
         };
 
         const userId = await Fetch("post", "user/login", formData);
-        localStorage.setItem("userId", userId);
-        navigate("/details");
+        await localStorage.setItem("userId", userId);
+        navigate(0);
     }
         return (
-            <>
-                <h1>Please log in!</h1>
+            <div className="container">
+                <h1 className="header">Please log in!</h1>
 
                 <form>
-                    <div>
-                        <p>Username: </p>
-                        <input onChange={(e) => updateField(e.target.value, "UserName")} id="UserName" type="text" />
+                    <div className="inputContainer">
+                        <p className="label">Username: </p>
+                        <input className="input" onChange={(e) => updateField(e.target.value, "UserName")} id="UserName" type="text" />
                     </div>
-                    <div>
-                        <p>Password: </p>
-                        <input onChange={(e) => updateField(e.target.value, "Password")} id="Password" type="password" />
+                    <div className="inputContainer">
+                        <p className="label">Password: </p>
+                        <input className="input" onChange={(e) => updateField(e.target.value, "Password")} id="Password" type="password" />
                     </div>
 
 
-                    <button type="submit" onClick={Login}>Login</button>
+                    <button className="button" type="submit" onClick={Login}>Login</button>
 
                 </form>
 
-            </>
+            </div>
         );
 
     };
