@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Fetch from "../Shared Components/Fetch";
 import PersonConverter from "../Else/PersonConverter";
 import "../../Styling/Appointments.css";
+import TokenConverter from '../Else/TokenConverter';
 
 
 const Appointments = () => {
@@ -11,7 +12,7 @@ const Appointments = () => {
 
     useEffect(() => {
         const dataFetch = async () => {
-            const appointmentData = await Fetch("get", "appointment/list/" + localStorage.getItem("userId"), "");
+            const appointmentData = await Fetch("get", "appointment/list/" + TokenConverter, "");
             setAppointments(appointmentData);
             setLoading(false);
         }
