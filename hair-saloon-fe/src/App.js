@@ -7,6 +7,7 @@ import User from "./Components/Single Components/User";
 import Appointment from "./Components/Single Components/Appointment";
 import Users from "./Components/Listing Components/Users";
 import Appointments from "./Components/Listing Components/Appointments";
+import RegisterForm from "./Components/Form Components/RegisterForm";
 
 function App() {
   return (
@@ -45,10 +46,10 @@ function App() {
                   <Route path="users" element={<Users />} />
 
                   {/* Register User */}
-                  <Route path="register" element={<IndexPage />} />
+                  <Route path="register" element={<RegisterForm />} />
 
                   {/* Get Other User */}
-                  <Route path="details/:id" element={<User />} />
+                  <Route path="details/:personId" element={<User />} />
 
                   {/* Edit Other User */}
                   <Route path="edit/:id" element={<IndexPage />} />
