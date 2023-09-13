@@ -17,7 +17,7 @@ namespace HairSaloonAPI.Services
             _db = db;
         }
 
-        private bool CheckIfUsernameExist(string username)
+        public bool CheckIfUsernameExist(string username)
         {
             if (_db.Users.Any(u => u.Username == username))
             {
@@ -27,7 +27,7 @@ namespace HairSaloonAPI.Services
             return false;
         }
 
-        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        public void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             using (var hmac = new HMACSHA512())
             {
@@ -36,7 +36,7 @@ namespace HairSaloonAPI.Services
             }
         }
 
-        private string CreateToken()
+        public string CreateToken()
         {
             return Convert.ToHexString(RandomNumberGenerator.GetBytes(64));
         }
