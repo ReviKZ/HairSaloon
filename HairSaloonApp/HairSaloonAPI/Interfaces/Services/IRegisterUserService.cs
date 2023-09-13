@@ -9,7 +9,7 @@ public interface IRegisterUserService
     /// </summary>
     /// <param name="username"></param>
     /// <returns>True if the username exist, otherwise False</returns>
-    public bool CheckIfUsernameExist(string username);
+    bool CheckIfUsernameExist(string username);
 
     /// <summary>
     /// Hashes the password.
@@ -17,7 +17,13 @@ public interface IRegisterUserService
     /// <param name="password"></param>
     /// <param name="passwordHash"></param>
     /// <param name="passwordSalt"></param>
-    public void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt);
+    void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt);
+
+    /// <summary>
+    /// Creates Random Token
+    /// </summary>
+    /// <returns></returns>
+    string CreateToken();
 
     /// <summary>
     /// Creates the user in the database if everything is in order with the values.
