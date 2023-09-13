@@ -122,7 +122,7 @@ namespace HairSaloonAPI.Controllers
             return Ok(_userService.GetAllHairDressers());
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("verify")]
         public async Task<ActionResult> VerifyToken(string token)
         {
