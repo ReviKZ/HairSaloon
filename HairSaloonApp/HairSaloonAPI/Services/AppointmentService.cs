@@ -53,7 +53,7 @@ public class AppointmentService : IAppointmentService
 
     }
 
-    public CreateAppointmentDTO GetAppointment(int id)
+    public GetAppointmentDTO GetAppointment(int id)
     {
         if (!_db.Appointments.Any(a => a.Id == id))
         {
@@ -64,19 +64,21 @@ public class AppointmentService : IAppointmentService
             .Include(a => a.HairDresser.User)
             .Include(a => a.Guest.User)
             .First(a => a.Id == id);
-        CreateAppointmentDTO _appointmentDto = new CreateAppointmentDTO
+        GetAppointmentDTO _appointmentDto = new GetAppointmentDTO
         {
+            Id = _appointment.Id,
             Date = new DateFormat(_appointment.Date.Year, _appointment.Date.Month, _appointment.Date.Day),
             StartTime = new TimeFormat(_appointment.StartTime.Hour, _appointment.StartTime.Minute, _appointment.StartTime.Second),
             EndTime = new TimeFormat(_appointment.EndTime.Hour, _appointment.EndTime.Minute, _appointment.EndTime.Second),
             GuestId = _appointment.Guest.User.Id,
             HairDresserId = _appointment.HairDresser.User.Id,
-            Description = _appointment.Description
+            Description = _appointment.Description,
+            Verified = _appointment.Verified
         };
         return _appointmentDto;
     }
 
-    public List<CreateAppointmentDTO> GetAppointmentListByUserId(int userId)
+    public List<GetAppointmentDTO> GetAppointmentListByUserId(int userId)
     {
         if (!_db.Users.Any(u => u.Id == userId))
         {
@@ -88,16 +90,18 @@ public class AppointmentService : IAppointmentService
             .Include(a => a.Guest.User)
             .Where(a => a.Guest.User.Id == userId || a.HairDresser.User.Id == userId)
             .ToList();
-        List<CreateAppointmentDTO> _appointmentList = new List<CreateAppointmentDTO>();
+        List<GetAppointmentDTO> _appointmentList = new List<GetAppointmentDTO>();
         foreach (Appointment appointment in _appointments)
-            _appointmentList.Add(new CreateAppointmentDTO
+            _appointmentList.Add(new GetAppointmentDTO
             {
+                Id = appointment.Id,
                 Date = new DateFormat(appointment.Date.Year, appointment.Date.Month, appointment.Date.Day),
                 StartTime = new TimeFormat(appointment.StartTime.Hour, appointment.StartTime.Minute, appointment.StartTime.Second),
                 EndTime = new TimeFormat(appointment.EndTime.Hour, appointment.EndTime.Minute, appointment.EndTime.Second),
                 GuestId = appointment.Guest.User.Id,
                 HairDresserId = appointment.HairDresser.User.Id,
-                Description = appointment.Description
+                Description = appointment.Description,
+                Verified = appointment.Verified
             });
         return _appointmentList;
     }

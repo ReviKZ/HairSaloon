@@ -1,7 +1,13 @@
 import './App.css';
 import { Routes, Route, Link } from 'react-router-dom';
-import { Layout } from "./Components/Shared Components/Layout"
-import { NotFound } from "./Components/Shared Components/NotFound"
+import Layout from "./Components/Shared Components/Layout"
+import NotFound from "./Components/Shared Components/NotFound";
+import IndexPage from "./Components/Shared Components/IndexPage";
+import User from "./Components/Single Components/User";
+import Appointment from "./Components/Single Components/Appointment";
+import Users from "./Components/Listing Components/Users";
+import Appointments from "./Components/Listing Components/Appointments";
+import RegisterForm from "./Components/Form Components/RegisterForm";
 
 function App() {
   return (
@@ -13,40 +19,40 @@ function App() {
                   {/* Page Tags */}
 
                   {/* For Everyone */}
-                  {/* Login Page */}
-                  <Route path="" element={ } />
+                  {/* Index Page */}
+                  <Route path="" element={<IndexPage />} />
 
                   {/* Get Own User */}
-                  <Route path="details" element={ } />
+                  <Route path="details" element={<User id={localStorage.getItem("userId")}/>} />
 
                   {/* Edit Own User */}
-                  <Route path="edit" element={ } />
+                  <Route path="edit" element={<IndexPage />} />
 
                   {/* Get Appointment List */}
-                  <Route path="appointments" element={ } />
+                  <Route path="appointments" element={<Appointments />} />
 
                   {/* Get Appointment */}
-                  <Route path="appointments/:id" element={ } />
+                  <Route path="appointments/:id" element={<Appointment />} />
 
 
                   {/* HairDresser Routes */}
                   {/* Add Appointment */}
-                  <Route path="appointments/create" element={ } />
+                  <Route path="appointments/create" element={<IndexPage />} />
 
                   {/* Edit Appointment */}
-                  <Route path="appointments/edit/:id" element={ } />
+                  <Route path="appointments/edit/:id" element={<IndexPage />} />
 
                   {/* List Users */}
-                  <Route path="users" element={ } />
+                  <Route path="users" element={<Users />} />
 
                   {/* Register User */}
-                  <Route path="register" element={ } />
+                  <Route path="register" element={<RegisterForm />} />
 
                   {/* Get Other User */}
-                  <Route path="details/:id" element={ } />
+                  <Route path="details/:personId" element={<User />} />
 
                   {/* Edit Other User */}
-                  <Route path="edit/:id" element={ } />
+                  <Route path="edit/:id" element={<IndexPage />} />
 
               </Route>
 

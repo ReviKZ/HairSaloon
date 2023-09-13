@@ -1,0 +1,53 @@
+/* PersonInfo.css */
+
+.person-info-container {
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.loading-text {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.user-details {
+    margin-top: 20px;
+}
+
+.gender,
+.position,
+.email,
+.phone {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.logout-button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #0056b3;
+}
+
+.no-user-text {
+    font-size: 16px;
+    margin-top: 20px;
+}

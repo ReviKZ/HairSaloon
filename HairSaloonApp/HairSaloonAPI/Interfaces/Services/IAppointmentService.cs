@@ -30,14 +30,14 @@ public interface IAppointmentService
     /// Gets all User related Appointments.
     /// </summary>
     /// <returns>Every Appointment with relations to the User</returns>
-    public List<CreateAppointmentDTO> GetAppointmentListByUserId(int UserId);
+    public List<GetAppointmentDTO> GetAppointmentListByUserId(int UserId);
 
     /// <summary>
     /// Gets the Appointment with the given id.
     /// </summary>
     /// <param name="id"></param>
     /// <returns>An Appointment with the matching id.</returns>
-    public CreateAppointmentDTO GetAppointment(int id);
+    public GetAppointmentDTO GetAppointment(int id);
 
     /// <summary>
     /// Changes the verification status of the appointment in the database with the given id.

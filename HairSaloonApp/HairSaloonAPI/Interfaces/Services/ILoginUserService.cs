@@ -1,4 +1,6 @@
-﻿namespace HairSaloonAPI.Interfaces.Services;
+﻿using HairSaloonAPI.Models.DTOs;
+
+namespace HairSaloonAPI.Interfaces.Services;
 
 public interface ILoginUserService
 {
@@ -16,4 +18,6 @@ public interface ILoginUserService
     /// <param name="username"></param>
     /// <returns>True if the values match, otherwise False</returns>
     public bool VerifyPasswordHash(string password, string username);
+
+    public int Login(LoginUserDTO userData);
 }

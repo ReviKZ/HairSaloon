@@ -66,17 +66,14 @@ namespace HairSaloonAPI.Controllers
         [Route("login")]
         public async Task<ActionResult<string>> Login(LoginUserDTO user)
         {
-            if (!_loginUserService.CheckIfUsernameExist(user.UserName))
+            try
             {
-                return NotFound("We haven't found a user with this username");
+                return Ok(_loginUserService.Login(user));
             }
-
-            if (!_loginUserService.VerifyPasswordHash(user.Password, user.UserName))
+            catch (BadHttpRequestException exception)
             {
-                return ValidationProblem("The password is incorrect");
+                return BadRequest(exception.Message);
             }
-
-            return Ok("You have been logged in");
         }
 
         //Edit Person data

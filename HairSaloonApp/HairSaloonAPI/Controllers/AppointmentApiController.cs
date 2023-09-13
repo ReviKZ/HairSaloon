@@ -103,7 +103,7 @@ namespace HairSaloonAPI.Controllers
 
         [HttpPatch]
         [Route("{id}/verify")]
-        public async Task<ActionResult<string>> VerfiyAppointment([FromRoute] int id)
+        public async Task<ActionResult<string>> VerifyAppointment([FromRoute] int id)
         {
             try
             {
