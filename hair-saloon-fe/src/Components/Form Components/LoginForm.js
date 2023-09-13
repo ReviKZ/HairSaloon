@@ -20,8 +20,13 @@ const LoginForm = () => {
         };
 
         const userToken = await Fetch("post", "user/login", formData);
-        await localStorage.setItem("userToken", userToken);
-        navigate(0);
+        if (userToken === false) {
+            alert("Wrong username & password combination!")
+        }
+        else {
+            await localStorage.setItem("userToken", userToken);
+            navigate(0);
+        }
     }
         return (
             <div className="container">
