@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Fetch from "../Shared Components/Fetch";
 import { useParams } from "react-router-dom";
 import "../../Styling/Appointment.css";
+import TokenConverter from '../Else/TokenConverter';
 
 const Appointment = () => {
     const { id } = useParams();
@@ -44,20 +45,20 @@ const Appointment = () => {
                     <p>Approx. Ending Time: {appointment.endTime.hour}:{appointment.endTime.minute}</p>
                     <p>Status of Appointment: {appointment.verified ? 'Verified' : 'Not Verified'}</p>
                     <p>Description of Appointment: {appointment.description}</p>
-                    {localStorage.getItem("userId") == hairDresser.user.id ? (
+                    {TokenConverter == hairDresser.user.id ? (
                         <p>Your Guest : {guest.firstName} {guest.lastName}</p>
                     ) : (
                         <p>Your Hairdresser : {hairDresser.firstName} {hairDresser.lastName}</p>
                     )}
                     <small>Is there a problem with the appointment? You want to get in contact, make corrections?</small>
                     <small>
-                        You can reach your {localStorage.getItem("userId") == hairDresser.user.id ? (
+                        You can reach your {TokenConverter == hairDresser.user.id ? (
                             <small>Guest at {guest.phoneNumber} or write to {guest.emailAddress}</small>
                         ) : (
                             <small>Hairdresser at {hairDresser.phoneNumber} or write to {hairDresser.emailAddress}</small>
                         )}
                     </small>
-                    {localStorage.getItem("userId") == hairDresser.user.id ? (
+                    {TokenConverter == hairDresser.user.id ? (
                         <></>
                     ) : (
                         <div>
