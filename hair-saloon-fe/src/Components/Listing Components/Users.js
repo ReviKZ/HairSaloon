@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Fetch from "../Shared Components/Fetch";
 
@@ -9,11 +9,15 @@ const Users = () => {
 
     useEffect(() => {
         const dataFetch = async () => {
-            const data = await Fetch("get", "list", "");
+            const data = await Fetch("get", "user/list", "");
             setUsers(data);
             setLoading(false);
         }
         dataFetch();
+    }, []);
+
+    const GoToUser = useCallback(async () => {
+        navigate(`/details/${document.getElementById("userBox").innerText}`);
     }, []);
 
     return (
@@ -24,13 +28,13 @@ const Users = () => {
                 : users ?
                     (
                         <form>
-                            <input list="userlist" id="selectedUser" />
-                                <datalist id="userlist">
-                                    {users.map((user) => 
-                                        <option value={user.userId}>{user.name}</option>
-                                    )};
-                                </datalist>
-                                <input type="button" onClick={navigate("/details/" + document.getElementById("selectedUser").value)}>Go to User</input>
+                            <input list="userlist" id="userBox"></input>
+                            <datalist id="userlist">
+                                {users.map((user) => 
+                                    <option value={user.name}>{user.userId}</option>
+                                )};
+                            </datalist>
+                            <button type="button" onClick={GoToUser}>Go to User</button>
                         </form>
                     )
                     :
