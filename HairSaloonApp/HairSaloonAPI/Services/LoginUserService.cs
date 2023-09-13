@@ -37,7 +37,7 @@ public class LoginUserService : ILoginUserService
         }
     }
 
-    public int Login(LoginUserDTO userData)
+    public string Login(LoginUserDTO userData)
     {
         if (!CheckIfUsernameExist(userData.UserName))
         {
@@ -49,6 +49,6 @@ public class LoginUserService : ILoginUserService
             throw new BadHttpRequestException("The password is incorrect");
         }
 
-        return _db.Users.First(u => u.Username == userData.UserName).Id;
+        return _db.Users.First(u => u.Username == userData.UserName).Token;
     }
 }
