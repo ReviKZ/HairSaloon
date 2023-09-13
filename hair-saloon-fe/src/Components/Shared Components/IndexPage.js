@@ -1,12 +1,11 @@
 import LoginForm from "../Form Components/LoginForm";
+import { Navigate } from 'react-router-dom';
 
 const IndexPage = () => {
     return (
         <>
             {localStorage.getItem("userId") == null ? <LoginForm /> :
-                <div>
-                    <h3>Logged in</h3>
-                </div>
+                <Navigate to="/details"></Navigate>
             }
         </>    
     );
