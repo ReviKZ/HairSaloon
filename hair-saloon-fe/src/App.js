@@ -7,7 +7,8 @@ import User from "./Components/Single Components/User";
 import Appointment from "./Components/Single Components/Appointment";
 import Users from "./Components/Listing Components/Users";
 import Appointments from "./Components/Listing Components/Appointments";
-import RegisterForm from "./Components/Form Components/RegisterForm";
+
+//import RegisterForm from "./Components/Form Components/RegisterForm";
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
                   <Route path="" element={<IndexPage />} />
 
                   {/* Get Own User */}
-                  <Route path="details" element={<User id={localStorage.getItem("userId")}/>} />
+                  <Route path="details" element={<User />} />
 
                   {/* Edit Own User */}
                   <Route path="edit" element={<IndexPage />} />
@@ -46,7 +47,7 @@ function App() {
                   <Route path="users" element={<Users />} />
 
                   {/* Register User */}
-                  <Route path="register" element={<RegisterForm />} />
+                  <Route path="register" element={<IndexPage />} />
 
                   {/* Get Other User */}
                   <Route path="details/:personId" element={<User />} />
