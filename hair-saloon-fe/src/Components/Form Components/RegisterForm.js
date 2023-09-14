@@ -18,7 +18,7 @@ const RegisterForm = () => {
         if (field === 'UserName' && newValue.length < 6) {
             errors.UserName = 'Username should be at least 6 characters';
         } else if (
-            (field === 'Password' || field === 'ConfirmPassword') &&
+            (field === 'Password') &&
             newValue.length < 6
         ) {
             errors.Password = 'Password should be at least 6 characters';
@@ -56,12 +56,16 @@ const RegisterForm = () => {
                 phoneNumber: form["PhoneNumber"],
                 emailAddress: form["EmailAddress"]
             },
-            gender: form["Gender"],
-            personType: form["PersonType"]
+            gender: form["Gender"]? form["Gender"] : "Male",
+            personType: form["PersonType"]? form["PersonType"] : "HairDresser"
         };
 
-        const message = await Fetch("post", "user/register", formData);
-        window.alert(message);
+        const result = await Fetch("post", "user/register", formData);
+        result == false ?
+            alert("A user already exists with this username!")
+            :
+            alert(result.message);
+        navigate(0);
     }
     return (
         <div className="container">
@@ -114,15 +118,16 @@ const RegisterForm = () => {
                 <div className="inputContainer">
                     <p className="label">Gender: </p>
                     <select className="input" onChange={(e) => updateField(e.target.value, "Gender")} id="Gender">
-                        <option value="Male">Male</option>
+                        <option selected value="Male">Male</option>
                         <option value="Female">Female</option>
+                        <option value="Else">None of the above</option>
                     </select>
                 </div>
                 <div className="inputContainer">
                     <p className="label">Position: </p>
                     <select className="input" onChange={(e) => updateField(e.target.value, "PersonType")} id="PersonType">
-                        <option value="Male">HairDresser</option>
-                        <option value="Female">Guest</option>
+                        <option selected value="HairDresser">HairDresser</option>
+                        <option value="Guest">Guest</option>
                     </select>
                 </div>
 
