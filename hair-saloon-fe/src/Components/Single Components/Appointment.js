@@ -11,6 +11,7 @@ const Appointment = () => {
     const [loading, setLoading] = useState(true);
     const [appointment, setAppointment] = useState(false);
     const [hairDresser, setHairDresser] = useState(false);
+    const [userId, setUserId] = useState();
     const [guest, setGuest] = useState(false);
 
     useEffect(() => {
@@ -18,7 +19,8 @@ const Appointment = () => {
             const appointmentData = await Fetch("get", "appointment/" + id, "");
             const hairDresserData = await Fetch("get", "user/" + appointmentData.hairDresserId, "");
             const guestData = await Fetch("get", "user/" + appointmentData.guestId, "");
-            console.log(hairDresserData);
+            const idData = await TokenConverter();
+            setUserId(idData);
             setAppointment(appointmentData);
             setHairDresser(hairDresserData);
             setGuest(guestData);
@@ -45,24 +47,24 @@ const Appointment = () => {
                     <p>Approx. Ending Time: {appointment.endTime.hour}:{appointment.endTime.minute}</p>
                     <p>Status of Appointment: {appointment.verified ? 'Verified' : 'Not Verified'}</p>
                     <p>Description of Appointment: {appointment.description}</p>
-                    {TokenConverter == hairDresser.user.id ? (
+                    {userId === hairDresser.user.id ? (
                         <p>Your Guest : {guest.firstName} {guest.lastName}</p>
                     ) : (
                         <p>Your Hairdresser : {hairDresser.firstName} {hairDresser.lastName}</p>
                     )}
-                    <small>Is there a problem with the appointment? You want to get in contact, make corrections?</small>
+                    <small>Is there a problem with the appointment? You want to get in contact, make corrections?</small><br/>
                     <small>
-                        You can reach your {TokenConverter == hairDresser.user.id ? (
+                        You can reach your {userId === hairDresser.user.id ? (
                             <small>Guest at {guest.phoneNumber} or write to {guest.emailAddress}</small>
                         ) : (
                             <small>Hairdresser at {hairDresser.phoneNumber} or write to {hairDresser.emailAddress}</small>
                         )}
                     </small>
-                    {TokenConverter == hairDresser.user.id ? (
+                    {userId === hairDresser.user.id ? (
                         <></>
                     ) : (
                         <div>
-                            <small>Nothing wrong? Then verify the appointment!</small>
+                            <small>Nothing wrong? Then verify the appointment!</small><br />
                             <button className="verify-button" type="button" onClick={verifyAppointment}>
                                 Verify
                             </button>
