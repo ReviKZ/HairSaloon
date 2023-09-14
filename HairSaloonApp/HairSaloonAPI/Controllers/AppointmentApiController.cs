@@ -10,14 +10,11 @@ namespace HairSaloonAPI.Controllers
     [ApiController]
     public class AppointmentApiController : ControllerBase
     {
-        private ILoginUserService _loginUserService;
-        private IUserService _userService;
+
         private IAppointmentService _appointmentService;
 
         public AppointmentApiController(ILoginUserService loginUserService, IUserService userService, IAppointmentService appointmentService)
         {
-            _loginUserService = loginUserService;
-            _userService = userService;
             _appointmentService = appointmentService;
         }
 
@@ -30,7 +27,7 @@ namespace HairSaloonAPI.Controllers
             {
                 _appointmentService.CreateAppointment(appointment);
 
-                return Ok("Appointment successfully created");
+                return Ok(new { Message = "Appointment successfully created" });
             }
             catch (BadHttpRequestException exception)
             {
@@ -46,7 +43,7 @@ namespace HairSaloonAPI.Controllers
             try
             {
                 _appointmentService.DeleteAppointment(id);
-                return Ok("Appointment has been deleted");
+                return Ok(new {Message = "Appointment has been deleted" });
             }
             catch (BadHttpRequestException exception)
             {
@@ -63,7 +60,7 @@ namespace HairSaloonAPI.Controllers
             {
                 _appointmentService.UpdateAppointment(id, appointment);
 
-                return Ok("Appointment has been updated");
+                return Ok(new {Message = "Appointment has been updated" });
             }
             catch (BadHttpRequestException exception)
             {
@@ -108,7 +105,7 @@ namespace HairSaloonAPI.Controllers
             try
             {
                 _appointmentService.VerifyAppointment(id);
-                return Ok("Appointment has been verified");
+                return Ok(new { Message = "Appointment has been verified"});
             }
             catch (BadHttpRequestException exception)
             {
