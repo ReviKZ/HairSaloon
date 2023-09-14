@@ -19,5 +19,10 @@ public interface ILoginUserService
     /// <returns>True if the values match, otherwise False</returns>
     public bool VerifyPasswordHash(string password, string username);
 
-    public int Login(LoginUserDTO userData);
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="userData"></param>
+    /// <returns>The user token</returns>
+    public string Login(LoginUserDTO userData);
 }

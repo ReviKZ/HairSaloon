@@ -10,4 +10,5 @@ public class User : IUser
     public string Username { get; set; } = string.Empty;
     public byte[] PasswordHash { get; set; } = new byte[32];
     public byte[] PasswordSalt { get; set; } = new byte[32];
+    public string Token { get; set; } = string.Empty;
 }

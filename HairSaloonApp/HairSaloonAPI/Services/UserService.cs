@@ -47,4 +47,14 @@ public class UserService : IUserService
 
         return users;
     }
+
+    public int ConvertTokenToId(string token)
+    {
+        if (!_db.Users.Any(u => u.Token == token))
+        {
+            throw new BadHttpRequestException("No User was found");
+        }
+
+        return _db.Users.First(u => u.Token == token).Id;
+    }
 }

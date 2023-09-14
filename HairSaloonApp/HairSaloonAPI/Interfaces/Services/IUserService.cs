@@ -18,4 +18,6 @@ public interface IUserService
     public List<UserListDTO> GetAllUsers();
 
     public List<UserListDTO> GetAllHairDressers();
+
+    public int ConvertTokenToId(string Token);
 }
