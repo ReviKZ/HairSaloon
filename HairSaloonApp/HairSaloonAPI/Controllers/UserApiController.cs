@@ -64,11 +64,12 @@ namespace HairSaloonAPI.Controllers
         //Login
         [HttpPost]
         [Route("login")]
-        public async Task<ActionResult<string>> Login(LoginUserDTO user)
+        public async Task<ActionResult> Login(LoginUserDTO user)
         {
             try
             {
-                return Ok(_loginUserService.Login(user));
+                string token = _loginUserService.Login(user);
+                return Ok(new { Token = token });
             }
             catch (BadHttpRequestException exception)
             {
@@ -124,7 +125,7 @@ namespace HairSaloonAPI.Controllers
 
         [HttpPost]
         [Route("verify")]
-        public async Task<ActionResult> VerifyToken(string token)
+        public async Task<ActionResult> VerifyToken([FromBody] string token)
         {
             try
             {
