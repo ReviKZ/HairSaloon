@@ -45,15 +45,19 @@ const RegisterForm = () => {
     async function Register(event) {
         event.preventDefault();
         var formData = {
-            UserName: form["UserName"],
-            Password: form["Password"],
-            ConfirmPassword: form["ConfirmPassword"],
-            FirstName: form["FirstName"],
-            LastName: form["LastName"],
-            PhoneNumber: form["PhoneNumber"],
-            EmailAddress: form["EmailAddress"],
-            Gender: form["Gender"],
-            PersonType: form["PersonType"]
+            user: {
+                userName: form["UserName"],
+                password: form["Password"],
+                confirmPassword: form["ConfirmPassword"]
+            },
+            person: {
+                firstName: form["FirstName"],
+                lastName: form["LastName"],
+                phoneNumber: form["PhoneNumber"],
+                emailAddress: form["EmailAddress"]
+            },
+            gender: form["Gender"],
+            personType: form["PersonType"]
         };
 
         const message = await Fetch("post", "user/register", formData);
