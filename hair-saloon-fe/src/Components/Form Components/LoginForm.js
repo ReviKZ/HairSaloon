@@ -19,8 +19,8 @@ const LoginForm = () => {
             Password: form["Password"]
         };
 
-        const userId = await Fetch("post", "user/login", formData);
-        await localStorage.setItem("userId", userId);
+        const userToken = await Fetch("post", "user/login", formData);
+        await localStorage.setItem("userToken", userToken.token);
         navigate(0);
     }
         return (

@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using HairSaloonAPI.Data;
 using HairSaloonAPI.Interfaces.DTOs;
 using HairSaloonAPI.Interfaces.Services;
@@ -35,6 +36,11 @@ namespace HairSaloonAPI.Services
             }
         }
 
+        public string CreateToken()
+        {
+            return Convert.ToHexString(RandomNumberGenerator.GetBytes(64));
+        }
+
         public void CreateUser(IRegisterUserDTO user)
         {
             if (CheckIfUsernameExist(user.UserName) == true)
@@ -48,6 +54,7 @@ namespace HairSaloonAPI.Services
             _user.Username = user.UserName;
             _user.PasswordSalt = passwordSalt;
             _user.PasswordHash = passwordHash;
+            _user.Token = CreateToken();
 
             _db.Users.Add(_user);
             _db.SaveChanges();

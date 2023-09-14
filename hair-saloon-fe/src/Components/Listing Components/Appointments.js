@@ -3,15 +3,19 @@ import { Link } from 'react-router-dom';
 import Fetch from "../Shared Components/Fetch";
 import PersonConverter from "../Else/PersonConverter";
 import "../../Styling/Appointments.css";
+import TokenConverter from '../Else/TokenConverter';
 
 
 const Appointments = () => {
     const [loading, setLoading] = useState(true);
     const [appointments, setAppointments] = useState(false);
+    const [id, setId] = useState();
 
     useEffect(() => {
         const dataFetch = async () => {
-            const appointmentData = await Fetch("get", "appointment/list/" + localStorage.getItem("userId"), "");
+            const idData = await TokenConverter();
+            const appointmentData = await Fetch("get", "appointment/list/" + idData, "");
+            setId(idData);
             setAppointments(appointmentData);
             setLoading(false);
         }
@@ -31,7 +35,7 @@ const Appointments = () => {
                                 <div className="appointment-details">
                                     {`${appointment.date.year}.${appointment.date.month}.${appointment.date.day} 
                     (${appointment.startTime.hour}:${appointment.startTime.minute})`}
-                                    {localStorage.getItem("userId") == appointment.hairDresserId ? (
+                                    {id == appointment.hairDresserId ? (
                                         <PersonConverter id={appointment.guestId} />
                                     ) : (
                                         <></>

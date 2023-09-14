@@ -6,4 +6,5 @@ public interface IUser
     public string Username { get; }
     public byte[] PasswordHash { get; }
     public byte[] PasswordSalt { get; }
+    public string Token { get; }
 }
