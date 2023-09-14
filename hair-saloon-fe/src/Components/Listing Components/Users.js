@@ -16,8 +16,14 @@ const Users = () => {
         dataFetch();
     }, []);
 
-    const GoToUser = useCallback(async () => {
-        navigate(`/details/${document.getElementById("userBox").innerText}`);
+    const GoToUser = useCallback(() => {
+        var selectedUser = document.getElementById("userBox").value;
+        if (selectedUser == "") {
+            alert("Please choose a user!")
+            return;
+        }
+        var selectedId = document.querySelector(`#userlist option[value='${selectedUser}']`).dataset.id
+        navigate(`/details/${selectedId}`);
     }, []);
 
     return (
@@ -31,7 +37,7 @@ const Users = () => {
                             <input list="userlist" id="userBox"></input>
                             <datalist id="userlist">
                                 {users.map((user) => 
-                                    <option value={user.name}>{user.userId}</option>
+                                    <option key={user.userId} data-id={user.userId} value={user.name}></option>
                                 )};
                             </datalist>
                             <button type="button" onClick={GoToUser}>Go to User</button>
