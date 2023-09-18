@@ -9,6 +9,7 @@ import Users from "./Components/Listing Components/Users";
 import Appointments from "./Components/Listing Components/Appointments";
 import RegisterForm from "./Components/Form Components/RegisterForm";
 import EditUserForm from "./Components/Form Components/EditUserForm";
+import RequireAuth from './Components/Else/RequireAuth';
 
 function App() {
   return (
@@ -23,37 +24,41 @@ function App() {
                   {/* Index Page */}
                   <Route path="" element={<IndexPage />} />
 
-                  {/* Get Own User */}
-                  <Route path="details" element={<User />} />
+                  <Route element={<RequireAuth allowedRoles={[0, 1]} />}>
+                      {/* Get Own User */}
+                      <Route path="details" element={<User />} />
 
-                  {/* Edit Own User */}
-                  <Route path="edit" element={<EditUserForm />} />
+                      {/* Edit Own User */}
+                      <Route path="edit" element={<EditUserForm />} />
 
-                  {/* Get Appointment List */}
-                  <Route path="appointments" element={<Appointments />} />
+                      {/* Get Appointment List */}
+                      <Route path="appointments" element={<Appointments />} />
 
-                  {/* Get Appointment */}
-                  <Route path="appointments/:id" element={<Appointment />} />
+                      {/* Get Appointment */}
+                      <Route path="appointments/:id" element={<Appointment />} />
+                  </Route>
 
 
                   {/* HairDresser Routes */}
-                  {/* Add Appointment */}
-                  <Route path="appointments/create" element={<IndexPage />} />
+                  <Route element={<RequireAuth allowedRoles={[1]} />}>
+                      {/* Add Appointment */}
+                      <Route path="appointments/create" element={<IndexPage />} />
 
-                  {/* Edit Appointment */}
-                  <Route path="appointments/edit/:id" element={<IndexPage />} />
+                      {/* Edit Appointment */}
+                      <Route path="appointments/edit/:id" element={<IndexPage />} />
 
-                  {/* List Users */}
-                  <Route path="users" element={<Users />} />
+                      {/* List Users */}
+                      <Route path="users" element={<Users />} />
 
-                  {/* Register User */}
-                  <Route path="register" element={<RegisterForm />} />
+                      {/* Register User */}
+                      <Route path="register" element={<RegisterForm />} />
 
-                  {/* Get Other User */}
-                  <Route path="details/:personId" element={<User />} />
+                      {/* Get Other User */}
+                      <Route path="details/:personId" element={<User />} />
 
-                  {/* Edit Other User */}
-                  <Route path="edit/:personId" element={<EditUserForm />} />
+                      {/* Edit Other User */}
+                      <Route path="edit/:personId" element={<EditUserForm />} />
+                  </Route>
 
               </Route>
 
