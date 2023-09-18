@@ -8,6 +8,7 @@ import Appointment from "./Components/Single Components/Appointment";
 import Users from "./Components/Listing Components/Users";
 import Appointments from "./Components/Listing Components/Appointments";
 import RegisterForm from "./Components/Form Components/RegisterForm";
+import EditUserForm from "./Components/Form Components/EditUserForm";
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
                   <Route path="details" element={<User />} />
 
                   {/* Edit Own User */}
-                  <Route path="edit" element={<IndexPage />} />
+                  <Route path="edit" element={<EditUserForm />} />
 
                   {/* Get Appointment List */}
                   <Route path="appointments" element={<Appointments />} />
@@ -52,7 +53,7 @@ function App() {
                   <Route path="details/:personId" element={<User />} />
 
                   {/* Edit Other User */}
-                  <Route path="edit/:id" element={<IndexPage />} />
+                  <Route path="edit/:personId" element={<EditUserForm />} />
 
               </Route>
 
