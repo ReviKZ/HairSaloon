@@ -8,6 +8,7 @@ import Appointment from "./Components/Single Components/Appointment";
 import Users from "./Components/Listing Components/Users";
 import Appointments from "./Components/Listing Components/Appointments";
 import RegisterForm from "./Components/Form Components/RegisterForm";
+import AppointmentForm from "./Components/Form Components/AppointmentForm";
 
 function App() {
   return (
@@ -37,7 +38,7 @@ function App() {
 
                   {/* HairDresser Routes */}
                   {/* Add Appointment */}
-                  <Route path="appointments/create" element={<IndexPage />} />
+                  <Route path="appointments/create" element={<AppointmentForm />} />
 
                   {/* Edit Appointment */}
                   <Route path="appointments/edit/:id" element={<IndexPage />} />
