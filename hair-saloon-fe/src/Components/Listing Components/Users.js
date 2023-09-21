@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Fetch from "../Shared Components/Fetch";
 
@@ -9,11 +9,21 @@ const Users = () => {
 
     useEffect(() => {
         const dataFetch = async () => {
-            const data = await Fetch("get", "list", "");
+            const data = await Fetch("get", "user/list", "");
             setUsers(data);
             setLoading(false);
         }
         dataFetch();
+    }, []);
+
+    const GoToUser = useCallback(() => {
+        var selectedUser = document.getElementById("userBox").value;
+        if (selectedUser == "") {
+            alert("Please choose a user!")
+            return;
+        }
+        var selectedId = document.querySelector(`#userlist option[value='${selectedUser}']`).dataset.id
+        navigate(`/details/${selectedId}`);
     }, []);
 
     return (
@@ -24,13 +34,13 @@ const Users = () => {
                 : users ?
                     (
                         <form>
-                            <input list="userlist" id="selectedUser" />
-                                <datalist id="userlist">
-                                    {users.map((user) => 
-                                        <option value={user.userId}>{user.name}</option>
-                                    )};
-                                </datalist>
-                                <input type="button" onClick={navigate("/details/" + document.getElementById("selectedUser").value)}>Go to User</input>
+                            <input list="userlist" id="userBox"></input>
+                            <datalist id="userlist">
+                                {users.map((user) => 
+                                    <option key={user.userId} data-id={user.userId} value={user.name}></option>
+                                )};
+                            </datalist>
+                            <button type="button" onClick={GoToUser}>Go to User</button>
                         </form>
                     )
                     :

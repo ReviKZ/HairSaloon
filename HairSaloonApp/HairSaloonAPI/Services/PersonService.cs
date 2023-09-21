@@ -100,6 +100,16 @@ public class PersonService : IPersonService
         }
         Person _person = _db.Persons.First(u => u.User.Id == id);
 
+        if (_db.Appointments.Include(a => a.HairDresser.User)
+            .Include(a => a.Guest.User)
+            .Any(a => a.HairDresser.User.Id == id || a.Guest.User.Id == id))
+        {
+            _db.Appointments.RemoveRange(_db.Appointments
+                .Include(a => a.HairDresser)
+                .Include(a => a.Guest)
+                .Where(a => a.HairDresser.User.Id == id || a.Guest.User.Id == id));
+        }
+
         _db.Remove(_person);
         _db.SaveChanges();
         

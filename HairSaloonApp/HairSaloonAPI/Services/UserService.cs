@@ -41,7 +41,7 @@ public class UserService : IUserService
 
     public List<UserListDTO> GetAllHairDressers()
     {
-        List<Person> dbUserList = _db.Persons.Where(p => p.Type == PersonType.HairDresser).ToList();
+        List<Person> dbUserList = _db.Persons.Include(p => p.User).Where(p => p.Type == PersonType.HairDresser).ToList();
         List<UserListDTO> users = new List<UserListDTO>();
         dbUserList.ForEach(p => users.Add(new UserListDTO(p.FirstName, p.LastName, p.User.Id)));
 
