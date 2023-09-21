@@ -11,6 +11,7 @@ import RegisterForm from "./Components/Form Components/RegisterForm";
 import EditUserForm from "./Components/Form Components/EditUserForm";
 import RequireAuth from './Components/Else/RequireAuth';
 import AppointmentForm from "./Components/Form Components/AppointmentForm";
+import EditAppointmentForm from './Components/Form Components/EditAppointmentForm';
 
 function App() {
   return (
@@ -42,13 +43,12 @@ function App() {
 
                   {/* HairDresser Routes */}
                   <Route element={<RequireAuth allowedRoles={[1]} />}>
+
                       {/* Add Appointment */}
-                      <Route path="appointments/create" element={<IndexPage />} />
-                  {/* Add Appointment */}
-                  <Route path="appointments/create" element={<AppointmentForm />} />
+                      <Route path="appointments/create" element={<AppointmentForm />} />
 
                       {/* Edit Appointment */}
-                      <Route path="appointments/edit/:id" element={<IndexPage />} />
+                      <Route path="appointments/edit/:id" element={<EditAppointmentForm />} />
 
                       {/* List Users */}
                       <Route path="users" element={<Users />} />
