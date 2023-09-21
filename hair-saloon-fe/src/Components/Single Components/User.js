@@ -59,7 +59,6 @@ const User = () => {
                     {user.user.id === id ?
                         (<>
                             <button className="logout-button" type="button" onClick={LogOut}>Log out!</button><br /><br />
-                            <button className="logout-button" type="button" onClick={GoToAppointments}>Appointments</button>
                          </>
                         ) 
                             :
