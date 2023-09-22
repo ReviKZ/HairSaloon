@@ -34,26 +34,33 @@ const Navbar = () => {
                         <img src={logo} alt="HairSalon logo" className="hairsalon-logo" onClick={() => navigate("/")} />
                     </div>
                     <div className="navbar-container-right">
-                        <button className="navbar-button" onClick={() => navigate("/appointments")}>
-                            Appointments
-                        </button>
-                        {user.type === 1 ?
+                        {user
+                            ?
                             <>
-                                <button className="navbar-button" onClick={() => navigate("/appointments/create")}>
-                                    Create Appointment
+                                <button className="navbar-button" onClick={() => navigate("/appointments")}>
+                                    Appointments
                                 </button>
+                                {user.type === 1 ?
+                                    <>
+                                        <button className="navbar-button" onClick={() => navigate("/appointments/create")}>
+                                            Create Appointment
+                                        </button>
 
-                                <button className="navbar-button" onClick={() => navigate("/users")}>
-                                    Search Users
-                                </button>
+                                        <button className="navbar-button" onClick={() => navigate("/users")}>
+                                            Search Users
+                                        </button>
 
-                                <button className="navbar-button" onClick={() => navigate("/register")}>
-                                    Register a User
-                                </button>
+                                        <button className="navbar-button" onClick={() => navigate("/register")}>
+                                            Register a User
+                                        </button>
+                                    </>
+                                    :
+                                    <></>
+                                }
                             </>
                             :
                             <></>
-                        }
+                            }
                     </div>
                 </div>
             </nav>
