@@ -33,8 +33,8 @@ const Appointments = () => {
                         <div key={appointment.id} className="appointment-item">
                             <Link to={`/appointments/${appointment.id}`} className="appointment-link">
                                 <div className="appointment-details">
-                                    {`${appointment.date.year}.${appointment.date.month}.${appointment.date.day} 
-                    (${appointment.startTime.hour}:${appointment.startTime.minute})`}
+                                    {`${appointment.date.year}.${appointment.date.month < 10 ? "0" + appointment.date.month : appointment.date.month}.${appointment.date.day < 10 ? "0" + appointment.date.day : appointment.date.day}
+                    (${appointment.startTime.hour < 10 ? "0" + appointment.startTime.hour : appointment.startTime.hour}:${appointment.startTime.minute < 10 ? "0" + appointment.startTime.minute : appointment.startTime.minute})`}
                                     {id == appointment.hairDresserId ? (
                                         <PersonConverter id={appointment.guestId} />
                                     ) : (

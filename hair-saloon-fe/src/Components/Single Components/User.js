@@ -10,13 +10,16 @@ const User = () => {
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(false);
     const [id, setId] = useState();
+    const [currUser, setCurrUser] = useState();
 
     useEffect(() => {
         const dataFetch = async () => {
             const idData = await TokenConverter();
-            const data = await Fetch("get", `user/${personId ? personId : idData}`, "");
+            const userData = await Fetch("get", `user/${personId ? personId : idData}`, "");
+            const currUserData = await Fetch("get", `user/${idData}`, "");
+            setCurrUser(currUserData);
             setId(idData);
-            setUser(data);
+            setUser(userData);
             setLoading(false);
         }
         dataFetch();
@@ -30,6 +33,16 @@ const User = () => {
     const GoToAppointments = useCallback(async () => {
         navigate("/appointments");
     }, []);
+
+    const deleteUser = useCallback(async () => {
+        await Fetch("delete", `user/delete/${personId ? personId : id}`, "");
+        if (id === user.user.id) {
+            LogOut()
+        }
+        else {
+            navigate("/");
+        }
+    })
 
     return (
         <div className="person-info-container">
@@ -46,10 +59,14 @@ const User = () => {
                     {user.user.id === id ?
                         (<>
                             <button className="logout-button" type="button" onClick={LogOut}>Log out!</button><br /><br />
-                            <button className="logout-button" type="button" onClick={GoToAppointments}>Appointments</button>
                          </>
                         ) 
                             :
+                            <></>}
+                        {currUser.type === 1 ? <div>
+                            <button className="verify-button" type="button" onClick={() => { navigate(`/edit/${id}`) }}>Edit</button>
+                            <button className="delete-button" type="button" onClick={deleteUser}>Delete</button>
+                        </div> :
                             <></>}
                 </div>
             ) : (

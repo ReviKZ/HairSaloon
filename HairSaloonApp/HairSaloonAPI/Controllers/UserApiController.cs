@@ -33,7 +33,7 @@ namespace HairSaloonAPI.Controllers
                 _registerUserService.CreateUser(requestBody.user);
                 int id = _userService.GetLastUserId();
                 _personService.CreatePerson(id, requestBody.gender, requestBody.personType, requestBody.person);
-                return Ok("User & Person has been created");
+                return Ok(new {Message = "User & Person has been created" });
 
             }
             catch (BadHttpRequestException exception)
@@ -53,7 +53,7 @@ namespace HairSaloonAPI.Controllers
                 _personService.DeletePerson(id);
                 _userService.DeleteUser(id);
 
-                return Ok("User & Person has been deleted");
+                return Ok(new { Message = "User & Person has been deleted" });
             }
             catch (BadHttpRequestException exception)
             {
@@ -86,7 +86,7 @@ namespace HairSaloonAPI.Controllers
             {
                 _personService.EditPerson(id, person);
 
-                return Ok("The person has been edited");
+                return Ok(new { Message = "The person has been edited" });
             }
             catch (BadHttpRequestException exception)
             {

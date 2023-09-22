@@ -47,6 +47,20 @@
     background-color: #0056b3;
 }
 
+.delete-button {
+    padding: 10px;
+    background-color: red;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: darkred;
+}
+
 .no-appointment h2 {
     font-size: 24px;
     margin-top: 20px;

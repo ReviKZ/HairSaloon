@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import Fetch from "../Shared Components/Fetch";
 import { useParams } from "react-router-dom";
 import "../../Styling/Appointment.css";
@@ -35,6 +35,11 @@ const Appointment = () => {
         navigate(0);
     }, []);
 
+    const deleteAppointment = useCallback(async () => {
+        await Fetch("delete", `appointment/delete/${id}`, "");
+        navigate("/appointments");
+    })
+
     return (
         <div className="appointment-info-container">
             <h1 className="info-heading">Appointment Information</h1>
@@ -42,9 +47,9 @@ const Appointment = () => {
                 <p className="loading-text">Loading...</p>
             ) : appointment ? (
                 <div className="appointment-details">
-                    <p>Date: {appointment.date.year}.{appointment.date.month}.{appointment.date.day}</p>
-                    <p>Starting Time: {appointment.startTime.hour}:{appointment.startTime.minute}</p>
-                    <p>Approx. Ending Time: {appointment.endTime.hour}:{appointment.endTime.minute}</p>
+                    <p>Date: {appointment.date.year}.{appointment.date.month < 10 ? `0${appointment.date.month}` : appointment.date.month}.{appointment.date.day < 10 ? `0${appointment.date.day}`: appointment.date.day}</p>
+                    <p>Starting Time: {appointment.startTime.hour < 10 ? `0${appointment.startTime.hour}` : appointment.startTime.hour}:{appointment.startTime.minute < 10 ? `0${appointment.startTime.minute}`: appointment.startTime.minute}</p>
+                    <p>Approx. Ending Time: {appointment.endTime.hour < 10 ? `0${appointment.endTime.hour}` : appointment.endTime.hour}:{appointment.endTime.minute < 10 ? `0${appointment.endTime.minute}` : appointment.endTime.minute}</p>
                     <p>Status of Appointment: {appointment.verified ? 'Verified' : 'Not Verified'}</p>
                     <p>Description of Appointment: {appointment.description}</p>
                     {userId === hairDresser.user.id ? (
@@ -61,7 +66,10 @@ const Appointment = () => {
                         )}
                     </small>
                     {userId === hairDresser.user.id ? (
-                        <></>
+                            <div>
+                                <button className="verify-button" type="button" onClick={() => { navigate(`/appointments/edit/${id}`) }}>Edit</button>
+                                <button className="delete-button" type="button" onClick={deleteAppointment}>Delete</button>
+                            </div>
                     ) : (
                         <div>
                             <small>Nothing wrong? Then verify the appointment!</small><br />
