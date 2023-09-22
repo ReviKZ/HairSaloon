@@ -26,12 +26,8 @@ const User = () => {
     }, []);
 
     const LogOut = useCallback(async () => {
-        localStorage.removeItem("userToken");
-        navigate("/");
-    }, []);
-
-    const GoToAppointments = useCallback(async () => {
-        navigate("/appointments");
+        await localStorage.removeItem("userToken");
+        await navigate(0);
     }, []);
 
     const deleteUser = useCallback(async () => {
@@ -64,7 +60,7 @@ const User = () => {
                             :
                             <></>}
                         {currUser.type === 1 ? <div>
-                            <button className="verify-button" type="button" onClick={() => { navigate(`/edit/${id}`) }}>Edit</button>
+                            <button className="verify-button" type="button" onClick={() => { navigate(`/edit/${personId ? personId : id}`) }}>Edit</button>
                             <button className="delete-button" type="button" onClick={deleteUser}>Delete</button>
                         </div> :
                             <></>}
