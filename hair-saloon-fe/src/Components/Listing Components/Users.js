@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Fetch from "../Shared Components/Fetch";
+import "../../Styling/Users.css"
 
 const Users = () => {
     const navigate = useNavigate();
@@ -27,32 +28,28 @@ const Users = () => {
     }, []);
 
     return (
-        <>
+        <div className="user-search-container">
             <h1>Search for a user</h1>
-            {loading ?
+            {loading ? (
                 <p>Loading...</p>
-                : users ?
-                    (
-                        <form>
-                            <input list="userlist" id="userBox"></input>
-                            <datalist id="userlist">
-                                {users.map((user) => 
-                                    <option key={user.userId} data-id={user.userId} value={user.name}></option>
-                                )};
-                            </datalist>
-                            <button type="button" onClick={GoToUser}>Go to User</button>
-                        </form>
-                    )
-                    :
-                    (
-                        <div>
-                            <p>
-                                There isn't any user in the database.
-                            </p>
-                        </div>
-                    )
-            }
-        </>
+            ) : users ? (
+                <form className="search-form">
+                    <input list="userlist" id="userBox" className="search-input" />
+                    <datalist id="userlist">
+                        {users.map((user) => (
+                            <option key={user.userId} data-id={user.userId} value={user.name}></option>
+                        ))}
+                    </datalist>
+                    <button type="button" onClick={GoToUser} className="search-button">
+                        Go to User
+                    </button>
+                </form>
+            ) : (
+                <div className="no-user-message">
+                    <p>There isn't any user in the database.</p>
+                </div>
+            )}
+        </div>
     );
 }
 
