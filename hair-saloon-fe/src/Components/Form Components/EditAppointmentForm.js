@@ -32,9 +32,9 @@ const EditAppointmentForm = () => {
 
     async function EditAppointment(event) {
         event.preventDefault();
-        var dateList = await form["Date"].split("-");
-        var sTList = await form["StartTime"].split(":");
-        var eTList = await form["EndTime"].split(":");
+        var dateList = await (form["Date"] ? form["Date"] : `${appointment.date.year}-${appointment.date.month}-${appointment.date.day}`).split("-");
+        var sTList = await (form["StartTime"] ? form["StartTime"] : `${appointment.startTime.hour}:${appointment.startTime.minute}`).split(":");
+        var eTList = await (form["EndTime"] ? form["EndTime"] : `${appointment.endTime.hour}:${appointment.endTime.minute}`).split(":");
         var formData = {
             date: {
                 year: parseInt(dateList[0]),
@@ -53,7 +53,7 @@ const EditAppointmentForm = () => {
             },
             guestId: guests.find((g) => g.name === form["Guest"]).userId,
             hairDresserId: hds.find((h) => h.name === form["HairDresser"]).userId,
-            description: form["Description"]
+            description: form["Description"] ? form["Description"] : appointment.description
         };
 
         const result = await Fetch("post", "appointment/create", formData);
@@ -77,13 +77,13 @@ const EditAppointmentForm = () => {
                     <form onSubmit={EditAppointment} className="appointment-form">
                         <div className="form-field">
                             <p>Date: </p>
-                            <input
+                                <input
                                     onChange={(e) => updateField(e.target.value, "Date")}
                                     id="Date"
                                     type="date"
                                     min="1900-01-01"
                                     max="2099-12-31"
-                                    placeholder={appointment.date.year + "-" + appointment.date.month + "-" + appointment.date.day}
+                                    defaultValue={`${appointment.date.year}-${appointment.date.month < 10 ? "0" + appointment.date.month : appointment.date.month}-${appointment.date.day < 10 ? "0" + appointment.date.day : appointment.date.day}`}
                             />
                         </div>
                         <div className="form-field">
@@ -92,7 +92,7 @@ const EditAppointmentForm = () => {
                                     onChange={(e) => updateField(e.target.value, "StartTime")}
                                     id="StartTime"
                                     type="time"
-                                    placeholder={appointment.startTime.hour + "-" + appointment.startTime.minute + "-" + appointment.startTime.second}
+                                    defaultValue={`${appointment.startTime.hour < 10 ? "0" + appointment.startTime.hour : appointment.startTime.hour}:${appointment.startTime.minute < 10 ? "0" + appointment.startTime.minute : appointment.startTime.minute}`}
                             />
                         </div>
                         <div className="form-field">
@@ -101,7 +101,7 @@ const EditAppointmentForm = () => {
                                     onChange={(e) => updateField(e.target.value, "EndTime")}
                                     id="EndTime"
                                     type="time"
-                                    placeholder={appointment.endTime.hour + "-" + appointment.endTime.minute + "-" + appointment.endTime.second }
+                                    defaultValue={`${appointment.endTime.hour < 10 ? "0" + appointment.endTime.hour : appointment.endTime.hour}:${appointment.endTime.minute < 10 ? "0" + appointment.endTime.minute : appointment.endTime.minute}`}
                             />
                         </div>
                         <div className="form-field">
@@ -112,7 +112,7 @@ const EditAppointmentForm = () => {
                                     id="Guest"
                             />
                             <datalist id="guestList">
-                                {guests.map((guest) => (
+                                    {guests.map((guest) => (
                                     <option key={guest.userId} value={guest.name} data-id={guest.userId}></option>
                                 ))}
                             </datalist>
