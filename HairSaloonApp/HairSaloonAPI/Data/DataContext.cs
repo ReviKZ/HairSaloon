@@ -13,13 +13,6 @@ public class DataContext : DbContext
             
     }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        base.OnConfiguring(optionsBuilder);
-        optionsBuilder
-            .UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=HairSaloonDB;Trusted_Connection=true;");
-    }
-
     public DbSet<User> Users => Set<User>();
     public DbSet<Person> Persons => Set<Person>();
     public DbSet<Appointment> Appointments => Set<Appointment>();
