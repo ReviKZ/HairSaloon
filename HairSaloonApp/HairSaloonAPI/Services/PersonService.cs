@@ -66,7 +66,7 @@ public class PersonService : IPersonService
 
     public Person GetPerson(int id)
     {
-        if (!_db.Users.Any(u => u.Id == id))
+        if (!_db.Persons.Any(u => u.Id == id))
         {
             throw new BadHttpRequestException("No User found.");
         }
