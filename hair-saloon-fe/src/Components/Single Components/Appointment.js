@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { FaCalendar, FaClock, FaFlagCheckered, FaCheck, FaTimes, FaComment, FaPen, FaTrash } from "react-icons/fa";
 import Fetch from "../Shared Components/Fetch";
 import { useParams } from "react-router-dom";
 import "../../Styling/Appointment.css";
@@ -49,11 +50,11 @@ const Appointment = () => {
                 <p className="loading-text">Loading...</p>
             ) : appointment ? (
                 <div className="appointment-details">
-                    <p>Date: {appointment.date.year}.{appointment.date.month < 10 ? `0${appointment.date.month}` : appointment.date.month}.{appointment.date.day < 10 ? `0${appointment.date.day}`: appointment.date.day}</p>
-                    <p>Starting Time: {appointment.startTime.hour < 10 ? `0${appointment.startTime.hour}` : appointment.startTime.hour}:{appointment.startTime.minute < 10 ? `0${appointment.startTime.minute}`: appointment.startTime.minute}</p>
-                    <p>Approx. Ending Time: {appointment.endTime.hour < 10 ? `0${appointment.endTime.hour}` : appointment.endTime.hour}:{appointment.endTime.minute < 10 ? `0${appointment.endTime.minute}` : appointment.endTime.minute}</p>
-                    <p>Status of Appointment: {appointment.verified ? 'Verified' : 'Not Verified'}</p>
-                    <p>Description of Appointment: {appointment.description}</p>
+                    <p><FaCalendar className="icon" /> {appointment.date.year}.{appointment.date.month < 10 ? `0${appointment.date.month}` : appointment.date.month}.{appointment.date.day < 10 ? `0${appointment.date.day}`: appointment.date.day}</p>
+                    <p><FaClock className="icon" /> {appointment.startTime.hour < 10 ? `0${appointment.startTime.hour}` : appointment.startTime.hour}:{appointment.startTime.minute < 10 ? `0${appointment.startTime.minute}`: appointment.startTime.minute}</p>
+                    <p><FaFlagCheckered className="icon" /> {appointment.endTime.hour < 10 ? `0${appointment.endTime.hour}` : appointment.endTime.hour}:{appointment.endTime.minute < 10 ? `0${appointment.endTime.minute}` : appointment.endTime.minute}</p>
+                    <p>Status: {appointment.verified ? <FaCheck className="icon" /> : <FaTimes className="icon" />}</p>
+                        <p><FaComment className="icon" /> {appointment.description}</p>
                     {userId === hairDresser.user.id ? (
                         <p>Your Guest : {guest.firstName} {guest.lastName}</p>
                     ) : (
@@ -69,8 +70,8 @@ const Appointment = () => {
                     </small>
                     {userId === hairDresser.user.id ? (
                             <div>
-                                <button className="verify-button" type="button" onClick={() => { navigate(`/appointments/edit/${id}`) }}>Edit</button>
-                                <button className="delete-button" type="button" onClick={deleteAppointment}>Delete</button>
+                                <button className="verify-button" type="button" onClick={() => { navigate(`/appointments/edit/${id}`) }}><FaPen className="icon" /></button>
+                                <button className="delete-button" type="button" onClick={deleteAppointment}><FaTrash className="icon" /></button>
                             </div>
                     ) : (
                         <div>

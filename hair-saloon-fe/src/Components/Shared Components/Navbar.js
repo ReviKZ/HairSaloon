@@ -1,6 +1,7 @@
 import logo from "../../Pics/hslogo.png";
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaSignOutAlt } from "react-icons/fa";
 import "../../Styling/Navbar.css";
 import Fetch from "../Shared Components/Fetch";
 import TokenConverter from "../Else/TokenConverter";
@@ -21,6 +22,11 @@ const Navbar = () => {
             setLoading(false);
         }
         dataFetch();
+    }, []);
+
+    const LogOut = useCallback(async () => {
+        await localStorage.removeItem("userToken");
+        await navigate(0);
     }, []);
 
     return (
@@ -57,6 +63,9 @@ const Navbar = () => {
                                     :
                                     <></>
                                 }
+                                <button className="logout-button" type="button" onClick={LogOut}>
+                                    <FaSignOutAlt />
+                                </button>
                             </>
                             :
                             <></>
