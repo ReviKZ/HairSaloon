@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import Fetch from "../Shared Components/Fetch";
 import "../../Styling/Users.css"
 
@@ -29,6 +30,7 @@ const Users = () => {
 
     return (
         <div className="user-search-container">
+            <Helmet><title>User Searcher</title></Helmet>
             <h1>Search for a user</h1>
             {loading ? (
                 <p>Loading...</p>

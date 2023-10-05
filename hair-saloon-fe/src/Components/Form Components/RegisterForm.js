@@ -1,6 +1,7 @@
 import "../../Styling/Register.css";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import Fetch from "../Shared Components/Fetch"
 import "../../Styling/LoginForm.css";
 
@@ -69,6 +70,7 @@ const RegisterForm = () => {
     }
     return (
         <div className="container">
+            <Helmet><title>Register</title></Helmet>
             <h1 className="header">Register a User!</h1>
 
             <form>

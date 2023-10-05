@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import Fetch from "../Shared Components/Fetch";
 import PersonConverter from "../Else/PersonConverter";
 import "../../Styling/Appointments.css";
@@ -24,6 +25,7 @@ const Appointments = () => {
 
     return (
         <div className="appointments-container">
+            <Helmet><title>Appointment List</title></Helmet>
             <h1 className="appointments-heading">Appointments</h1>
             {loading ? (
                 <p className="loading-text">Loading...</p>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import Fetch from "../Shared Components/Fetch"
 import "../../Styling/LoginForm.css";
 
@@ -31,6 +32,8 @@ const LoginForm = () => {
     };
         return (
             <div className="container">
+                <Helmet><title>Login</title></Helmet>
+
                 <h1 className="header">Please log in!</h1>
 
                 <form>

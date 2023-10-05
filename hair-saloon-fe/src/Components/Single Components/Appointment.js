@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import Fetch from "../Shared Components/Fetch";
 import { useParams } from "react-router-dom";
 import "../../Styling/Appointment.css";
@@ -42,6 +43,7 @@ const Appointment = () => {
 
     return (
         <div className="appointment-info-container">
+            <Helmet><title>Appointment Details</title></Helmet>
             <h1 className="info-heading">Appointment Information</h1>
             {loading ? (
                 <p className="loading-text">Loading...</p>
