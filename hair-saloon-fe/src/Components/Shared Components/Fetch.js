@@ -9,7 +9,7 @@ async function Fetch(type, endpoint, payload) {
 
     if (type === "get") {
         response = await fetch(
-            `https://localhost:7035/api/${endpoint}`, {
+            `${process.env.REACT_APP_API_URL}${endpoint}`, {
             method: "GET",
         }
         );
@@ -17,7 +17,7 @@ async function Fetch(type, endpoint, payload) {
 
     if (type === "post") {
         response = await fetch(
-            `https://localhost:7035/api/${endpoint}`, {
+            `${process.env.REACT_APP_API_URL}${endpoint}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -29,7 +29,7 @@ async function Fetch(type, endpoint, payload) {
 
     if (type === "put") {
         response = await fetch(
-            `https://localhost:7035/api/${endpoint}`, {
+            `${process.env.REACT_APP_API_URL}${endpoint}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -41,7 +41,7 @@ async function Fetch(type, endpoint, payload) {
 
     if (type === "patch") {
         response = await fetch(
-            `https://localhost:7035/api/${endpoint}`, {
+            `${process.env.REACT_APP_API_URL}${endpoint}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -53,7 +53,7 @@ async function Fetch(type, endpoint, payload) {
 
     if (type === "delete") {
         response = await fetch(
-            `https://localhost:7035/api/${endpoint}`, {
+            `${process.env.REACT_APP_API_URL}${endpoint}`, {
             method: "DELETE",
         }
         );
