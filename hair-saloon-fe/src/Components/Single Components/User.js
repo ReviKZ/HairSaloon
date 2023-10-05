@@ -55,13 +55,7 @@ const User = () => {
                     <p className="position">Position: {user.type === 0 ? 'Guest' : 'Hairdresser'}</p>
                         <p className="email"><FaEnvelope className="icon" /> {user.emailAddress}</p>
                         <p className="phone"><FaPhone className="icon" /> {user.phoneNumber}</p>
-                    {user.user.id === id ?
-                        (<>
-                            <button className="logout-button" type="button" onClick={LogOut}>Log out!</button><br /><br />
-                         </>
-                        ) 
-                            :
-                            <></>}
+
                         {currUser.type === 1 ? <div>
                             <button className="verify-button" type="button" onClick={() => { navigate(`/edit/${personId ? personId : id}`) }}><FaPen className="icon" /></button>
                             <button className="delete-button" type="button" onClick={deleteUser}><FaTrash className="icon" /></button>
