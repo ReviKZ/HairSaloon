@@ -1,5 +1,6 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import Fetch from "../Shared Components/Fetch";
 import TokenConverter from "../Else/TokenConverter";
 import "../../Styling/User.css";
@@ -64,6 +65,7 @@ const EditUserForm = () => {
 
     return (
         <div className="container">
+            <Helmet><title>Edit User</title></Helmet>
             <h1 className="header">Edit this User!</h1>
 
             <form>

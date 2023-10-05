@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import Fetch from '../Shared Components/Fetch';
 import "../../Styling/AppointmentForm.css";
 
@@ -64,6 +65,7 @@ const AppointmentForm = () => {
 
     return (
         <div className="container">
+            <Helmet><title>Create Appointment</title></Helmet>
             {loading ? (
                 <p>Loading...</p>
             ) : guests ? (
