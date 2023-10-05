@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { FaMars, FaVenus, FaGenderless, FaEnvelope, FaPhone, FaPen, FaTrash } from "react-icons/fa";
 import Fetch from "../Shared Components/Fetch";
 import TokenConverter from "../Else/TokenConverter";
 import "../../Styling/User.css";
@@ -50,10 +51,10 @@ const User = () => {
             ) : user ? (
                 <div className="user-details">
                     <h3>{user.firstName} {user.lastName}</h3>
-                        <p className="gender">Gender: {user.gender === 0 ? 'Male' : user.gender === 1 ? 'Female' : 'Not Specified'}</p>
+                        <p className="gender">Gender: {user.gender === 0 ? <FaMars className="icon" /> : user.gender === 1 ? <FaVenus className="icon" /> : <FaGenderless className="icon" />}</p>
                     <p className="position">Position: {user.type === 0 ? 'Guest' : 'Hairdresser'}</p>
-                    <p className="email">Email: {user.emailAddress}</p>
-                    <p className="phone">Phone: {user.phoneNumber}</p>
+                        <p className="email"><FaEnvelope className="icon" /> {user.emailAddress}</p>
+                        <p className="phone"><FaPhone className="icon" /> {user.phoneNumber}</p>
                     {user.user.id === id ?
                         (<>
                             <button className="logout-button" type="button" onClick={LogOut}>Log out!</button><br /><br />
@@ -62,8 +63,8 @@ const User = () => {
                             :
                             <></>}
                         {currUser.type === 1 ? <div>
-                            <button className="verify-button" type="button" onClick={() => { navigate(`/edit/${personId ? personId : id}`) }}>Edit</button>
-                            <button className="delete-button" type="button" onClick={deleteUser}>Delete</button>
+                            <button className="verify-button" type="button" onClick={() => { navigate(`/edit/${personId ? personId : id}`) }}><FaPen className="icon" /></button>
+                            <button className="delete-button" type="button" onClick={deleteUser}><FaTrash className="icon" /></button>
                         </div> :
                             <></>}
                 </div>
