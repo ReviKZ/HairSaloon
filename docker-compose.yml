@@ -1,0 +1,29 @@
+version: "3.8"
+
+
+services:
+	frontend:
+		build: ./hair-saloon-fe
+		ports: 
+			- 3000:3000
+		environment:
+			REACT_APP_API_URL: backend
+
+	backend:
+		build: ./HairSaloonApp/HairSaloonAPI
+		ports:
+			- 7035:7035
+		environment:
+			ASPCORENET_ConnectionStrings__DefaultConnection: sqlserver://db/HairSaloonDB
+			ASPCORENET_FrontendUrl: frontend
+
+	db:
+		image: mcr.microsoft.com/mssql/server:2022-CU8-ubuntu-20.04
+		ports:
+			- 1433:1433
+		volumes:
+			- HairSaloon:/var/opt/mssql/data
+
+
+volumes:
+	HairSaloon:
