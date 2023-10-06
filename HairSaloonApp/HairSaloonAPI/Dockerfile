@@ -1,10 +1,6 @@
 #Base Image
 FROM mcr.microsoft.com/dotnet/sdk:6.0-focal AS build
 
-#Create User for App to not use root user
-RUN adduser app
-USER app
-
 #Create & Use /src
 WORKDIR /src
 

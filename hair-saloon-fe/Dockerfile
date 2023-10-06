@@ -1,10 +1,6 @@
 #Base Image
 FROM node:18.17.1-alpine3.18
 
-#Create User for App to not use root user
-RUN addgroup app && adduser -S -G app app
-USER app
-
 #Create & Use /app
 WORKDIR /app
 
