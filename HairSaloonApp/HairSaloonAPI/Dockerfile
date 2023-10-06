@@ -2,7 +2,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0-focal AS build
 
 #Create User for App to not use root user
-RUN addgroup app && adduser -S -G app app
+RUN adduser app
 USER app
 
 #Create & Use /src
