@@ -22,9 +22,11 @@ builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ILoginUserService, LoginUserService>();
 builder.Services.AddTransient<IPersonService, PersonService>();
 
+string frontendUrl = builder.Configuration.GetValue<string>("FrontendUrl");
+
 builder.Services.AddCors(option => option.AddPolicy("MyCorsPolicy", builder =>
 {
-    builder.WithOrigins("http://localhost:3000")
+    builder.WithOrigins(frontendUrl)
         .AllowAnyHeader()
         .AllowAnyMethod()
         .AllowCredentials();
