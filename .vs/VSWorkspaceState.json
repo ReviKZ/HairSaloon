@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\HairSaloonApp",
+    "\\HairSaloonApp\\HairSaloonAPI",
     "\\UMLs"
   ],
-  "SelectedNode": "\\UMLs\\HairSaloonUML_v.1.6.png",
+  "SelectedNode": "\\start.bat",
   "PreviewInSolutionExplorer": false
 }

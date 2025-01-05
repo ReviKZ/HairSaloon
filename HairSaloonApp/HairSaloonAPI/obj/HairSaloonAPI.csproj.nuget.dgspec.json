@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Revi\\source\\repos\\HairSaloon\\HairSaloonApp\\HairSaloonAPI\\HairSaloonAPI.csproj": {}
+    "C:\\Users\\Revi\\Source\\Repos\\HairSaloon\\HairSaloonApp\\HairSaloonAPI\\HairSaloonAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Revi\\source\\repos\\HairSaloon\\HairSaloonApp\\HairSaloonAPI\\HairSaloonAPI.csproj": {
+    "C:\\Users\\Revi\\Source\\Repos\\HairSaloon\\HairSaloonApp\\HairSaloonAPI\\HairSaloonAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Revi\\source\\repos\\HairSaloon\\HairSaloonApp\\HairSaloonAPI\\HairSaloonAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Revi\\Source\\Repos\\HairSaloon\\HairSaloonApp\\HairSaloonAPI\\HairSaloonAPI.csproj",
         "projectName": "HairSaloonAPI",
-        "projectPath": "C:\\Users\\Revi\\source\\repos\\HairSaloon\\HairSaloonApp\\HairSaloonAPI\\HairSaloonAPI.csproj",
+        "projectPath": "C:\\Users\\Revi\\Source\\Repos\\HairSaloon\\HairSaloonApp\\HairSaloonAPI\\HairSaloonAPI.csproj",
         "packagesPath": "C:\\Users\\Revi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Revi\\source\\repos\\HairSaloon\\HairSaloonApp\\HairSaloonAPI\\obj\\",
+        "outputPath": "C:\\Users\\Revi\\Source\\Repos\\HairSaloon\\HairSaloonApp\\HairSaloonAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
