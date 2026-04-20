@@ -14,63 +14,63 @@ import AppointmentForm from "./Components/Form Components/AppointmentForm";
 import EditAppointmentForm from './Components/Form Components/EditAppointmentForm';
 
 function App() {
-  return (
-      <>
-          {/* Main Router Tag */}
-          <Routes>
-              {/* Layout Tag */}
-              <Route path="/" element={<Layout />} >
-                  {/* Page Tags */}
+    return (
+        <>
+            {/* Main Router Tag */}
+            <Routes>
+                {/* Layout Tag */}
+                <Route path="/" element={<Layout />} >
+                    {/* Page Tags */}
 
-                  {/* For Everyone */}
-                  {/* Index Page */}
-                  <Route path="" element={<IndexPage />} />
+                    {/* For Everyone */}
+                    {/* Index Page */}
+                    <Route path="" element={<IndexPage />} />
 
-                  <Route element={<RequireAuth allowedRoles={[0, 1]} />}>
-                      {/* Get Own User */}
-                      <Route path="details" element={<User />} />
+                    <Route element={<RequireAuth allowedRoles={[0, 1]} />}>
+                        {/* Get Own User */}
+                        <Route path="details" element={<User />} />
 
-                      {/* Edit Own User */}
-                      <Route path="edit" element={<EditUserForm />} />
+                        {/* Edit Own User */}
+                        <Route path="edit" element={<EditUserForm />} />
 
-                      {/* Get Appointment List */}
-                      <Route path="appointments" element={<Appointments />} />
+                        {/* Get Appointment List */}
+                        <Route path="appointments" element={<Appointments />} />
 
-                      {/* Get Appointment */}
-                      <Route path="appointments/:id" element={<Appointment />} />
-                  </Route>
+                        {/* Get Appointment */}
+                        <Route path="appointments/:id" element={<Appointment />} />
+                    </Route>
 
 
-                  {/* HairDresser Routes */}
-                  <Route element={<RequireAuth allowedRoles={[1]} />}>
+                    {/* HairDresser Routes */}
+                    <Route element={<RequireAuth allowedRoles={[1]} />}>
 
-                      {/* Add Appointment */}
-                      <Route path="appointments/create" element={<AppointmentForm />} />
+                        {/* Add Appointment */}
+                        <Route path="appointments/create" element={<AppointmentForm />} />
 
-                      {/* Edit Appointment */}
-                      <Route path="appointments/edit/:id" element={<EditAppointmentForm />} />
+                        {/* Edit Appointment */}
+                        <Route path="appointments/edit/:id" element={<EditAppointmentForm />} />
 
-                      {/* List Users */}
-                      <Route path="users" element={<Users />} />
+                        {/* List Users */}
+                        <Route path="users" element={<Users />} />
 
-                      {/* Register User */}
-                      <Route path="register" element={<RegisterForm />} />
+                        {/* Register User */}
+                        <Route path="register" element={<RegisterForm />} />
 
-                      {/* Get Other User */}
-                      <Route path="details/:personId" element={<User />} />
+                        {/* Get Other User */}
+                        <Route path="details/:personId" element={<User />} />
 
-                      {/* Edit Other User */}
-                      <Route path="edit/:personId" element={<EditUserForm />} />
-                  </Route>
+                        {/* Edit Other User */}
+                        <Route path="edit/:personId" element={<EditUserForm />} />
+                    </Route>
 
-              </Route>
+                </Route>
 
-              {/* Not-Found Page */}
-              <Route path="*" element={<NotFound />} />
+                {/* Not-Found Page */}
+                <Route path="*" element={<NotFound />} />
 
-          </Routes>
-      </>
-  );
+            </Routes>
+        </>
+    );
 }
 
 export default App;

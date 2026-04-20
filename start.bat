@@ -1,5 +1,6 @@
 @echo off
 
+REM Author: Kovács Zoárd Gábor
 REM Navigate to the front-end folder
 cd hair-saloon-fe
 
