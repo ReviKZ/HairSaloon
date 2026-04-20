@@ -3,6 +3,10 @@ using HairSaloonAPI.Interfaces.Services;
 using HairSaloonAPI.Services;
 using Microsoft.EntityFrameworkCore;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
