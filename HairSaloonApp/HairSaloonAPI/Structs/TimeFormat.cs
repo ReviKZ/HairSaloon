@@ -2,6 +2,9 @@
 
 namespace HairSaloonAPI.Structs;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
 public struct TimeFormat
 {
     private int _hour;
@@ -15,7 +18,7 @@ public struct TimeFormat
         _second = second;
     }
 
-    public int Hour 
+    public int Hour
     {
         get
         {

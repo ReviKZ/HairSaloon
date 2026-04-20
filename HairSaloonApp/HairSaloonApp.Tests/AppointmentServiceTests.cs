@@ -12,6 +12,11 @@ using Newtonsoft.Json;
 
 namespace HairSaloonApp.Tests;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
+
+
 [TestFixture]
 public class AppointmentServiceTests
 {
@@ -344,7 +349,7 @@ public class AppointmentServiceTests
             Id = 1,
             Verified = false
         };
-        
+
         _InMemoryDb.Appointments.Add(_appointment);
         _InMemoryDb.SaveChanges();
 

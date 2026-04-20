@@ -2,6 +2,9 @@
 
 namespace HairSaloonAPI.Models.DTOs.ControllerDTOs;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
 public class UserListDTO : IUserListDTO
 {
     public UserListDTO(string firstName, string lastName, int userId)

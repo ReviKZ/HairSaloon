@@ -11,6 +11,10 @@ using Newtonsoft.Json;
 
 namespace HairSaloonApp.Tests;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
+
 [TestFixture]
 public class PersonServiceTests
 {
@@ -45,7 +49,7 @@ public class PersonServiceTests
     public void CreatePerson_DataGiven_PersonAddedToDb()
     {
         //Arrange
-        PersonDTO _personData = new PersonDTO{EmailAddress = "test@test.com", FirstName = "test", LastName = "test", PhoneNumber = "0101"};
+        PersonDTO _personData = new PersonDTO { EmailAddress = "test@test.com", FirstName = "test", LastName = "test", PhoneNumber = "0101" };
 
         //Act
         service.CreatePerson(1, "Male", "HairDresser", _personData);

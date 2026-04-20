@@ -1,10 +1,11 @@
 {
   "ExpandedNodes": [
     "",
+    "\\.github",
     "\\HairSaloonApp",
     "\\HairSaloonApp\\HairSaloonAPI",
     "\\UMLs"
   ],
-  "SelectedNode": "\\HairSaloonApp\\HairSaloonAPI\\Interfaces",
+  "SelectedNode": "\\README.md",
   "PreviewInSolutionExplorer": false
 }

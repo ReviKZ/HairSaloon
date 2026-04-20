@@ -3,6 +3,9 @@ using HairSaloonAPI.Interfaces;
 
 namespace HairSaloonAPI.Models;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
 public class Appointment : IAppointment
 {
     [Key]

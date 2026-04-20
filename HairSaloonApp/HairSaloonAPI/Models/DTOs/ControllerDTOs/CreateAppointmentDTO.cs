@@ -3,6 +3,9 @@ using HairSaloonAPI.Structs;
 
 namespace HairSaloonAPI.Models.DTOs.ControllerDTOs;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
 public class CreateAppointmentDTO : ICreateAppointmentDTO
 {
     public DateFormat Date { get; set; }

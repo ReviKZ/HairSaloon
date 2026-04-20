@@ -1,5 +1,8 @@
 ﻿namespace HairSaloonAPI.Structs;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
 public struct DateFormat
 {
     private int _year;

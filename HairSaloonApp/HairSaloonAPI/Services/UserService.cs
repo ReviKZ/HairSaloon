@@ -8,6 +8,10 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace HairSaloonAPI.Services;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
+
 public class UserService : IUserService
 {
     private DataContext _db;

@@ -2,6 +2,9 @@
 
 namespace HairSaloonAPI.Interfaces.Services;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
 public interface IUserService
 {
     /// <summary>

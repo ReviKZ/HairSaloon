@@ -10,6 +10,10 @@ using Microsoft.AspNetCore.Http;
 
 namespace HairSaloonApp.Tests;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
+
 [TestFixture]
 public class LoginUserServiceTests
 {
@@ -131,7 +135,7 @@ public class LoginUserServiceTests
         _InMemoryDb.Users.Add(_user);
         _InMemoryDb.SaveChanges();
 
-        LoginUserDTO _userData = new LoginUserDTO{Password = "password", UserName = "nottest"};
+        LoginUserDTO _userData = new LoginUserDTO { Password = "password", UserName = "nottest" };
 
         //Act
 

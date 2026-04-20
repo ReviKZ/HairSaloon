@@ -3,6 +3,9 @@ using HairSaloonAPI.Models.DTOs;
 using HairSaloonAPI.Models.DTOs.ControllerDTOs;
 using Microsoft.AspNetCore.Mvc;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
 namespace HairSaloonAPI.Controllers
 {
     [Route("api/user")]
@@ -33,7 +36,7 @@ namespace HairSaloonAPI.Controllers
                 _registerUserService.CreateUser(requestBody.user);
                 int id = _userService.GetLastUserId();
                 _personService.CreatePerson(id, requestBody.gender, requestBody.personType, requestBody.person);
-                return Ok(new {Message = "User & Person has been created" });
+                return Ok(new { Message = "User & Person has been created" });
 
             }
             catch (BadHttpRequestException exception)

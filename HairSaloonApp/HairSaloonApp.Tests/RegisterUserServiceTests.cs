@@ -10,6 +10,10 @@ using Microsoft.AspNetCore.Http;
 
 namespace HairSaloonApp.Tests;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
+
 [TestFixture]
 public class RegisterUserServiceTests
 {
@@ -89,7 +93,7 @@ public class RegisterUserServiceTests
         using (var hmac = new HMACSHA512(_passwordSaltOriginal))
         {
             _passwordHashReturned = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes("password"));
-            
+
         }
 
 
@@ -120,8 +124,8 @@ public class RegisterUserServiceTests
         _InMemoryDb.Users.Add(_user);
         _InMemoryDb.SaveChanges();
 
-        
-        RegisterUserDTO _userWithSameUserName = new RegisterUserDTO {UserName = "test", Password = "password", ConfirmPassword = "password"};
+
+        RegisterUserDTO _userWithSameUserName = new RegisterUserDTO { UserName = "test", Password = "password", ConfirmPassword = "password" };
 
         //Act
 

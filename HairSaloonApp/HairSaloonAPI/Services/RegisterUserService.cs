@@ -6,6 +6,10 @@ using HairSaloonAPI.Interfaces.Services;
 using HairSaloonAPI.Models;
 using BadHttpRequestException = Microsoft.AspNetCore.Http.BadHttpRequestException;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
+
 namespace HairSaloonAPI.Services
 {
     public class RegisterUserService : IRegisterUserService

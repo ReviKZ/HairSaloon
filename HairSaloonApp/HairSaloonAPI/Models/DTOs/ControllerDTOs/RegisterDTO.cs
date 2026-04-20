@@ -3,6 +3,9 @@ using HairSaloonAPI.Interfaces.DTOs.ControllerDTOs;
 
 namespace HairSaloonAPI.Models.DTOs.ControllerDTOs;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
 public class RegisterDTO : IRegisterDTO
 {
     public RegisterUserDTO user { get; set; }

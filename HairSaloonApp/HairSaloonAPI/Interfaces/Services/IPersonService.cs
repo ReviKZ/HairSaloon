@@ -3,6 +3,9 @@ using HairSaloonAPI.Models;
 
 namespace HairSaloonAPI.Interfaces.Services;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
 public interface IPersonService
 {
     /// <summary>

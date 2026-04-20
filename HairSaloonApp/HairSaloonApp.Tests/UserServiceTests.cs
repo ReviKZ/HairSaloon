@@ -8,6 +8,10 @@ using System.Security.Cryptography;
 using HairSaloonAPI.Enums;
 using HairSaloonAPI.Models.DTOs.ControllerDTOs;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
+
 namespace HairSaloonApp.Tests
 {
     public class UserServiceTests
@@ -38,7 +42,7 @@ namespace HairSaloonApp.Tests
         {
             //Arrange
             Random _randomId = new Random();
-            
+
             //Act
 
             //Assert
@@ -110,11 +114,13 @@ namespace HairSaloonApp.Tests
             string token = Convert.ToHexString(RandomNumberGenerator.GetBytes(64));
             User _user1 = new User { Id = 1, PasswordHash = _bytes, PasswordSalt = _bytes, Token = token, Username = "test1" };
             User _user2 = new User { Id = 2, PasswordHash = _bytes, PasswordSalt = _bytes, Token = token, Username = "test2" };
-            Person _person1 = new Person {Id = 1, 
-                EmailAddress = "test1", 
-                FirstName = "test1", 
-                LastName = "test1", 
-                Gender = Gender.Male, 
+            Person _person1 = new Person
+            {
+                Id = 1,
+                EmailAddress = "test1",
+                FirstName = "test1",
+                LastName = "test1",
+                Gender = Gender.Male,
                 PhoneNumber = "0101",
                 Type = PersonType.HairDresser,
                 User = _user1

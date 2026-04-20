@@ -11,8 +11,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HairSaloonAPI.Services;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
 public class AppointmentService : IAppointmentService
-{   
+{
     private DataContext _db;
 
     public AppointmentService(DataContext db)

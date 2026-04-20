@@ -4,6 +4,9 @@ using HairSaloonAPI.Models.DTOs.ControllerDTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
 namespace HairSaloonAPI.Controllers
 {
     [Route("api/appointment")]
@@ -43,7 +46,7 @@ namespace HairSaloonAPI.Controllers
             try
             {
                 _appointmentService.DeleteAppointment(id);
-                return Ok(new {Message = "Appointment has been deleted" });
+                return Ok(new { Message = "Appointment has been deleted" });
             }
             catch (BadHttpRequestException exception)
             {
@@ -60,7 +63,7 @@ namespace HairSaloonAPI.Controllers
             {
                 _appointmentService.UpdateAppointment(id, appointment);
 
-                return Ok(new {Message = "Appointment has been updated" });
+                return Ok(new { Message = "Appointment has been updated" });
             }
             catch (BadHttpRequestException exception)
             {
@@ -71,7 +74,7 @@ namespace HairSaloonAPI.Controllers
         //List Appointments by User Id
         [HttpGet]
         [Route("list/{id}")]
-        public async Task<ActionResult> ListByUserId([FromRoute]int id)
+        public async Task<ActionResult> ListByUserId([FromRoute] int id)
         {
             try
             {
@@ -105,7 +108,7 @@ namespace HairSaloonAPI.Controllers
             try
             {
                 _appointmentService.VerifyAppointment(id);
-                return Ok(new { Message = "Appointment has been verified"});
+                return Ok(new { Message = "Appointment has been verified" });
             }
             catch (BadHttpRequestException exception)
             {

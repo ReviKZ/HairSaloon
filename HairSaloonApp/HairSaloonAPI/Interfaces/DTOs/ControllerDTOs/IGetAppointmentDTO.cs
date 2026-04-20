@@ -1,5 +1,9 @@
 ﻿using HairSaloonAPI.Structs;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
+
 namespace HairSaloonAPI.Interfaces.DTOs.ControllerDTOs;
 
 public interface IGetAppointmentDTO

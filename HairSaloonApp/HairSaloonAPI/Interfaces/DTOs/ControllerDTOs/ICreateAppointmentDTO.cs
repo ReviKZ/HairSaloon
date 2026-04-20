@@ -2,6 +2,9 @@
 
 namespace HairSaloonAPI.Interfaces.DTOs.ControllerDTOs;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
 public interface ICreateAppointmentDTO
 {
     public DateFormat Date { get; set; }

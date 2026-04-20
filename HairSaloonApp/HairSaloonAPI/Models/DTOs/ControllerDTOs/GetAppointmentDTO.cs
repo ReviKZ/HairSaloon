@@ -2,6 +2,9 @@
 
 namespace HairSaloonAPI.Models.DTOs.ControllerDTOs;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
 public class GetAppointmentDTO
 {
     public int Id { get; set; }

@@ -7,6 +7,9 @@ using HairSaloonAPI.Models.DTOs;
 
 namespace HairSaloonAPI.Services;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
 public class LoginUserService : ILoginUserService
 {
     private DataContext _db;

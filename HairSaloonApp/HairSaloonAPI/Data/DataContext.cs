@@ -3,6 +3,9 @@ using HairSaloonAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
 namespace HairSaloonAPI.Data;
 
 public class DataContext : DbContext

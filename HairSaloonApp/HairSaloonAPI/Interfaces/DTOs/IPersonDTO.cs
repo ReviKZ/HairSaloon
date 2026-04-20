@@ -1,5 +1,8 @@
 ﻿namespace HairSaloonAPI.Interfaces.DTOs;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
 public interface IPersonDTO
 {
     public string FirstName { get; }

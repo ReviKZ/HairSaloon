@@ -9,6 +9,9 @@ using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
 namespace HairSaloonAPI.Services;
 
+/// Author:
+/// Kovács Zoárd Gábor
+/// A6I2XW
 public class PersonService : IPersonService
 {
     private DataContext _db;
@@ -28,7 +31,7 @@ public class PersonService : IPersonService
         {
             if (gender == Gender.Male.ToString())
             {
-               _gender = Gender.Male;
+                _gender = Gender.Male;
             }
             else if (gender == Gender.Female.ToString())
             {
@@ -38,7 +41,8 @@ public class PersonService : IPersonService
             {
                 _gender = Gender.Else;
             }
-        };
+        }
+        ;
         _person.Gender = _gender;
 
         var _personType = new PersonType();
@@ -51,7 +55,8 @@ public class PersonService : IPersonService
             {
                 _personType = PersonType.Guest;
             }
-        };
+        }
+        ;
         _person.Type = _personType;
 
         _person.FirstName = personInfo.FirstName;
@@ -112,6 +117,6 @@ public class PersonService : IPersonService
 
         _db.Remove(_person);
         _db.SaveChanges();
-        
+
     }
 }
